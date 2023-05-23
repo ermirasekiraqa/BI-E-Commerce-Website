@@ -1,10 +1,15 @@
 :root {
   /* CSS variables */
-  --padding: 60px 200px 60px 200px;
+  --padding: 3rem;
   --background-grey: #eeeeee;
   --light-grey: #7c7a7a;
   --light-red: #dc7957;
   --font-size: 14px;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
 }
 
 /* Header styling */
@@ -109,6 +114,10 @@ header a {
   padding: 0 50px;
 }
 
+#header-menu img {
+  max-width: 5rem;
+}
+
 #header-menu ul {
   padding-left: 3px;
   display: grid;
@@ -155,33 +164,46 @@ footer {
   padding-bottom: 0;
 }
 
-.related-info {
+.useful-info {
   display: flex;
-  justify-content: space-between;
-  text-align: left;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 8rem;
 }
 
-/* .related-info div {
-	width: calc((100% / 5));
-  } */
+.logo-in-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.related-info div p {
+.logo-in-footer img {
+  max-width: 50%;
+}
+
+.get-in-touch-info li {
   list-style: none;
-  margin-top: 14px;
-  font-size: 10px;
-  color: var(--light-grey);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.related-info div p:hover {
+.get-in-touch-info li i:hover {
   cursor: pointer;
-  font-weight: 600;
+  color: var(--light-red);
+  transition-duration: 0.5s;
 }
 
-.related-info div p span {
-  margin-bottom: 20px;
-  color: black;
-  font-size: var(--font-size);
-  font-weight: bold;
+.quick-links li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  line-height: 23pt;
+}
+
+.quick-links li:hover {
+  color: var(--light-red);
+  transition-duration: 0.5s;
 }
 
 .copyright-social-media {
@@ -208,30 +230,4 @@ footer {
   transition-duration: 0.1s;
   transition-timing-function: ease-out;
   cursor: pointer;
-}
-
-.modal-container {
-  border: solid 1px black;
-  display: grid;
-  place-content: center;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-}
-
-.close-btn {
-  position: absolute;
-  right: 0;
-  cursor: pointer;
-  border: none;
-  background-color: unset;
-  font-size: 20px;
-  color: #dc7957;
-  padding: 10px;
-  font-weight: 900;
 }

@@ -1,6 +1,6 @@
 :root {
   /* CSS variables */
-  --padding: 60px 200px 60px 200px;
+  --padding: 3rem;
   --background-grey: #eeeeee;
   --light-grey: #7c7a7a;
   --light-red: #dc7957;

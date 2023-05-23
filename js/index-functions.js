@@ -4,8 +4,8 @@ whereToBuyButton.onclick = whereToBuy;
 let supportButton = document.getElementById("support-button");
 supportButton.onclick = support;
 
-let flySafeButton = document.getElementById("fly-safe-button");
-flySafeButton.onclick = flySafe;
+let visitUsButton = document.getElementById("visit-us-button");
+visitUsButton.onclick = visitUs;
 
 function whereToBuy() {
     window.location = "shop.html";
@@ -15,6 +15,6 @@ function support() {
     window.location = "contact.html";
 }
 
-function flySafe() {
-    window.open("https://www.flysafego.com/", "_blank");
+function visitUs() {
+    window.location = "contact.html";
 }
