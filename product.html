@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <link rel="stylesheet" href="css\shop-style.css">
+    <link rel="stylesheet" href="css\normalize.css">
+    <link rel="stylesheet" href="css\common.css">
+
+    <script src="js\shop-data.js"></script>
+    <script defer src="js\single-product-functions.js"></script>
+    <script defer src="js\header-functions.js"></script>
+
+    <title>Shop</title>
+
+    <link rel="icon" type="image/x-icon" href="images\favicon.png">
+</head>
+
+<body>
+    <header>
+        <nav id="header-menu">
+            <h1><b>Drone</b></h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="explore.html"> Explore</a></li>
+                <li id="active">Shop</li>
+                <li><a href="about-us.html">About us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="shopping-cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="product-card" class="single-product">
+            <div id="images">
+                <div id="main-img">
+                    <img id="main" src="" alt="">
+                </div>
+                <div id="smaller-images">
+                    <div id="small-img">
+                        <img class="small" src="images\black-drone.png" alt="">
+                    </div>
+                    <div id="small-img">
+                        <img class="small" src="images\blue-drone.png" alt="">
+                    </div>
+                    <div id="small-img">
+                        <img class="small" src="images\red-drone.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="prod-description">
+                <div class="prod-info">
+                    <h4 id="prod-name"></h4>
+                    <h1 id="prod-price"></h1>
+                    <div id="quantity-add-button">
+                        <input type="number" value="1" min="1" id="product-quantity">
+                        <button id="add-to-cart-button" class="entry-and-about-us-button">Add to cart</button>
+                    </div>
+                </div>
+                <div class="prod-specifics">
+                    <table>
+                        <tr>
+                            <th>Specifics</th>
+                            <th>Details about drone</th>
+                        </tr>
+                        <tr>
+                            <td><b>Flying time</b></td>
+                            <td><i id="flying-time"></i></td>
+                        </tr>
+                        <tr>
+                            <td><b>Batteries</b></td>
+                            <td><i id="batteries"></i></td>
+                        </tr>
+                        <tr>
+                            <td><b>Flight range</b></td>
+                            <td><i id="flight-range"></i></td>
+                        </tr>
+                        <tr>
+                            <td><b>Cameras</b></td>
+                            <td><i id="cameras"></i></td>
+                        </tr>
+                        <tr>
+                            <td><b>First person view</b></td>
+                            <td><i id="first-person-view"></i></td>
+                        </tr>
+                        <tr>
+                            <td><b>GPS</b></td>
+                            <td><i id="gps"></i></td>
+                        </tr>
+                        <tr>
+                            <td><b>Repairs</b></td>
+                            <td><i id="repairs"></i></td>
+                        </tr>
+                        <tr>
+                            <td><b>Speed</b></td>
+                            <td><i id="speed"></i></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section class="related-info">
+            <div id="product-categories">
+                <p><span>Product Categories</span></p>
+                <p>Consumer</p>
+                <p>Professional</p>
+                <p>Enterprise</p>
+                <p>Components</p>
+            </div>
+            <div id="where-to-buy">
+                <p><span>Where to Buy</span></p>
+                <p>Consumer</p>
+                <p>Professional</p>
+                <p>Enterprise</p>
+                <p>Components</p>
+            </div>
+            <div id="quick-links">
+                <p><span>Quick Links</span></p>
+                <p>Who we are</p>
+                <p>Contact Us</p>
+                <p>Careers</p>
+                <p>Dealer portal</p>
+            </div>
+            <div id="service-plan">
+                <p><span>Service Plan</span></p>
+                <p>Consumer</p>
+                <p>Professional</p>
+                <p>Enterprise</p>
+                <p>Components</p>
+            </div>
+            <div id="cooperation">
+                <p><span>Cooperation</span></p>
+                <p>Consumer</p>
+                <p>Professional</p>
+                <p>Enterprise</p>
+                <p>Components</p>
+            </div>
+        </section>
+
+        <section class="copyright-social-media">
+            <p>
+                Copyright © 2022 Templates Jungle Rights Reserved. Feedback on web
+                experience
+            </p>
+            <div id="social-media-icons">
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-google-plus"></i>
+                <i class="fa fa-linkedin"></i>
+            </div>
+        </section>
+    </footer>
+</body>
+
+</html>

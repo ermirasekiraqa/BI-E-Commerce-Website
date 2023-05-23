@@ -1,0 +1,78 @@
+img {
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 800px auto;
+  height: 100vh;
+}
+
+main img {
+  opacity: 0.8;
+}
+
+#signup-form {
+  display: grid;
+  place-content: center;
+  gap: 20px;
+}
+
+#signup-form input {
+  padding: 8px;
+  border-radius: 3px;
+  border: solid 1px #dc7957;
+  outline: none;
+}
+
+#signup-form input::placeholder {
+  font-size: 14px;
+}
+
+#signup-form button {
+  background-color: #dc7957;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+#terms-label {
+  font-size: 14px;
+  color: #dc7957;
+}
+
+#terms-label input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+#signup-form h1 {
+  color: #dc7957;
+}
+
+.container {
+  display: grid;
+  place-content: center;
+  gap: 30px;
+}
+
+.container a {
+  justify-self: center;
+  font-size: 14px;
+  color: #dc7957;
+}
+
+#radio-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  place-content: start;
+  gap: 10px;
+}
+
+.radio-label span {
+  font-size: 12xp;
+  color: #dc7957;
+  text-align: center;
+}

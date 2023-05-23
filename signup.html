@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css\normalize.css" />
+  <link rel="stylesheet" href="css\signup.css" />
+
+  <script defer src="js\signup.js"></script>
+
+  <title>Sign up</title>
+
+  <link rel="icon" type="image/x-icon" href="images\favicon.png">
+</head>
+
+<body>
+  <main>
+    <img src="images\signup-img.jpg" alt="" />
+    <div class="container">
+      <form action="" method="post" id="signup-form">
+        <h1>Join Our Community!</h1>
+        <input type="text" placeholder="Username" required="true" id="username" />
+        <input type="email" placeholder="Email" required="true" id="email" />
+        <input type="password" placeholder="Password" required="true" minlength="5" id="password" />
+        <input type="password" placeholder="Confirm Password" required="true" minlength="5" id="confirm-password" />
+        <label for="#terms&cond" id="terms-label">
+          <input type="checkbox" id="terms&cond" required="true" />
+          Accept Terms & Conditions
+        </label>
+        <div id="radio-buttons">
+          <label for="company-radio" class="radio-label" style="font-size: 14px">
+            <input type="radio" name="account-type" id="company-radio" />
+            <span>Company</span>
+          </label>
+          <label for="individual-radio" class="radio-label" style="font-size: 14px">
+            <input type="radio" name="account-type" id="individual-radio" />
+            <span>Individual</span>
+          </label>
+        </div>
+
+        <button type="submit">Sign up</button>
+      </form>
+      <a href="login.html">Already a member? Log In</a>
+    </div>
+  </main>
+</body>
+
+</html>
