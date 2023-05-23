@@ -1,6 +1,7 @@
 :root {
   /* CSS variables */
-  --padding: 60px 200px 60px 200px;
+  /* --padding: 60px 200px 60px 200px; */
+  --padding: 3rem;
   --background-grey: #eeeeee;
   --light-grey: #7c7a7a;
   --light-red: #dc7957;
@@ -9,12 +10,6 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-@media (prefers-color-scheme: dark) {
-  .About-Us {
-    background-color: red;
-  }
 }
 
 body {
@@ -30,46 +25,19 @@ a {
 /* Entry styling */
 .entry {
   padding: var(--padding);
-  display: flex;
-  margin: 0 16px 40px 16px;
-  position: relative;
-}
-
-.entry mark {
-  padding: 10px;
-  background-color: #f9fa9b;
-  position: absolute;
-  top: 0;
-  width: 83%;
-}
-
-.entry mark a span {
-  text-decoration: underline;
+  background-image: url("/images/entry-background.jpg");
 }
 
 #entry-text {
   font-size: 13px;
-  padding-right: 0;
 }
 
-.entry img {
-  width: 65%;
-  padding-left: 0;
-}
-
-#modern-technology {
-  font-weight: 300;
-  font-size: 30px;
-  color: black;
-  margin-bottom: 0;
-}
-
-#drone {
+#entry-text-header {
   margin-top: 0;
-  margin-bottom: 0;
   font-weight: 300;
   font-size: 96px;
   color: black;
+  max-width: 10ch;
 }
 
 .text {
@@ -77,6 +45,8 @@ a {
   color: var(--light-grey);
   line-height: 18pt;
   font-size: var(--font-size);
+  max-width: 50ch;
+  text-align: justify;
 }
 
 .entry-and-about-us-button {
@@ -97,13 +67,16 @@ a {
 }
 
 /* About Us styling */
-.About-Us {
-  background-color: var(--background-grey);
+.About-And-Subscribe-Us {
   display: flex;
+  justify-content: space-between;
+  gap: 5rem;
   padding: var(--padding);
-  padding-bottom: 100px;
   place-content: center;
-  gap: 200px;
+}
+
+#about-us-section {
+  background-color: var(--background-grey);
 }
 
 .section-header {
@@ -116,203 +89,16 @@ a {
   font-weight: 600;
 }
 
-.About-Subscribe-img {
-  /* margin: auto; */
-  width: 300px;
-}
-
 .About-Subscribe-img img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  border-radius: 10px;
 }
 
-.About-Us p {
-  max-width: 55ch;
-}
-
-/* Explore section styling */
-.explore {
-  padding: var(--padding);
-  display: grid;
-  gap: 20px;
-  place-content: center;
-}
-
-.explore img {
-  width: 100%;
-  height: 100%;
-}
-
-.explore-intro p {
-  max-width: 80ch;
-}
-
-.explore-latest-article-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 300px);
-  gap: 20px;
-}
-
-.explore-latest-article-card {
-  display: grid;
-  grid-template-rows: 260px 200px;
-}
-
-.explore-latest-article-card-text {
-  display: grid;
-  grid-template-rows: auto 100px auto;
-  place-content: center;
-}
-
-.explore-latest-article-card-text p {
-  padding: 0 12px;
-}
-
-.card-header {
-  font-size: 18px;
-  font-weight: 500;
-  color: black;
-  margin-bottom: 16px;
-  margin-top: 48px;
-}
-
-.explore-and-latest-article-button {
-  margin-left: 8px;
-  background: none;
-  border: none;
-  place-self: start;
-  cursor: pointer;
-  text-decoration: underline;
-  color: var(--light-red);
-  font-size: var(--font-size);
-}
-
-.explore-and-latest-article-button:hover {
-  color: var(--light-grey);
-  font-size: 16px;
-  transition-duration: 0.1s;
-  transition-timing-function: ease-out;
-}
-
-.explore-other {
-  display: grid;
-  grid-template-columns: repeat(3, 300px);
-  gap: 20px;
-  place-content: center;
-  margin-top: 100px;
-}
-
-.explore-other img {
-  height: 100%;
-}
-
-.explore-other-more {
-  display: grid;
-  grid-template-rows: repeat(2, 280px);
-  grid-template-columns: 300px;
-  gap: 20px;
-}
-
-.explore-other-more-actions {
-  position: relative;
-}
-
-.explore-other-more-actions-img {
-  filter: brightness(0.6);
-  position: absolute;
-}
-
-.explore-more-actions-info {
-  position: absolute;
-  z-index: 10;
-  margin: 50px 40px;
-}
-
-.explore-more-actions-info h4 {
-  text-align: center;
-  color: white;
-  font-size: 30px;
-  font-weight: 400;
-  margin-bottom: 20px;
-  padding: 0 5px;
-}
-
-.explore-other-more-actions-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  place-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.explore-other-more-actions-buttons button {
-  padding: 8px 13px;
-  font-size: 13px;
-  font-weight: 300;
-  cursor: pointer;
-}
-
-.explore-other-more-actions-buttons button:hover {
-  scale: 1.2;
-  transition-timing-function: ease-out;
-  z-index: 10;
-  transition-duration: 0.5s;
-}
-
-.explore-other-lm-btn {
-  background-color: white;
-  color: black;
-  border: none;
-  border: solid 1px white;
-}
-
-.explore-other-pn-btn {
-  background-color: transparent;
-  border: solid 1px white;
-  color: white;
-}
-
-.explore-other-pn-btn:hover {
-  background-color: white;
-  color: black;
-  border: none;
-  border: solid 1px rgba(0, 0, 0, 0.6);
-}
-
-/* Latest article styling */
-.latest-article {
-  padding: var(--padding);
-  background-color: var(--background-grey);
-  display: grid;
-  gap: 20px;
-  place-content: center;
-}
-
-.latest-article img {
-  width: 100%;
+#About-And-Subscribe-Us-Text {
+  max-width: 70ch;
 }
 
 /* Subscribe us styling */
-.Subscribe-Us {
-  display: flex;
-  padding: var(--padding);
-  place-content: center;
-  gap: 180px;
-}
-
-.Subscribe-Us .About-Subscribe-img {
-  width: 300px;
-}
-
-.Subscribe-Us .About-Subscribe-img img {
-  width: 100%;
-  height: 100%;
-}
-
-#Subscribe-Us-Text p {
-  max-width: 55ch;
-}
-
 #user-input-email {
   margin-right: -4px;
   height: 38px;
@@ -325,28 +111,6 @@ a {
 #user-input-email::placeholder {
   font-size: 14px;
   padding: 5px;
-}
-
-#subscribe-us-title {
-  font-size: 16px;
-}
-
-/* Subscribe us styling */
-.Subscribe-Us {
-  display: flex;
-  padding: var(--padding);
-}
-
-#Subscribe-Us-Text p {
-  max-width: 55ch;
-}
-
-#user-input-email {
-  margin-right: -4px;
-  height: 38px;
-  width: 65%;
-  border: none;
-  background-color: var(--background-grey);
 }
 
 #subscribe-us-title {
