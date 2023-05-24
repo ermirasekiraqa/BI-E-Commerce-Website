@@ -1,6 +1,7 @@
 :root {
   --light-pink: #dc5774;
   --background-grey: #eeeeee;
+  --light-grey: #7c7a7a;
 }
 
 body {
@@ -83,5 +84,15 @@ main h1 {
 }
 
 #main-page-link:hover {
+  scale: 1.2;
+}
+
+#forgot-password {
+  color: var(--light-grey);
+  font-size: 10px;
+  text-align: right;
+}
+
+#forgot-password:hover {
   scale: 1.2;
 }

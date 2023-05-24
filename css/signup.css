@@ -28,6 +28,7 @@ body {
   border: solid 1px var(--light-pink);
   outline: none;
   font-size: 14px;
+  margin-bottom: 1rem;
 }
 
 #signup-form input::placeholder {
@@ -63,6 +64,10 @@ body {
   font-size: 14px;
   color: var(--light-pink);
   margin: 2rem 0;
+}
+
+.container p {
+  font-size: 12px;
 }
 
 .registration-successful {

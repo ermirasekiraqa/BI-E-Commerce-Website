@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $phone_number = $_POST['phone_number'];
     $address = $_POST['address'];
     $city = $_POST['city'];
