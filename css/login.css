@@ -1,3 +1,9 @@
+:root {
+  --light-pink: #dc5774;
+  --background-grey: #eeeeee;
+  --light-grey: #7c7a7a;
+}
+
 body {
   overflow: hidden;
 }
@@ -7,13 +13,13 @@ main {
   place-content: center;
   height: 100vh;
   gap: 50px;
-  background-color: #eeeeee;
+  background-color: var(--background-grey);
 }
 
 main h1 {
   text-align: center;
   font-size: 35px;
-  color: #dc7957;
+  color: var(--light-pink);
 }
 
 #signup-link {
@@ -43,7 +49,7 @@ main h1 {
 }
 
 #login-form input {
-  border: solid 1px #dc7957;
+  border: solid 1px var(--light-pink);
   padding: 5px;
   border-radius: 5px;
   outline: none;
@@ -57,7 +63,7 @@ main h1 {
 #login-form button {
   padding: 8px 5px;
   font-size: 14px;
-  background-color: #dc7957;
+  background-color: var(--light-pink);
   border: none;
   border-radius: 5px;
   color: white;
@@ -67,7 +73,6 @@ main h1 {
 }
 
 #login-form button:hover {
-  background-color: #ff1700;
   scale: 1.1;
 }
 
@@ -79,5 +84,15 @@ main h1 {
 }
 
 #main-page-link:hover {
+  scale: 1.2;
+}
+
+#forgot-password {
+  color: var(--light-grey);
+  font-size: 10px;
+  text-align: right;
+}
+
+#forgot-password:hover {
   scale: 1.2;
 }

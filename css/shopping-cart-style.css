@@ -3,7 +3,7 @@
   --padding: 3rem;
   --background-grey: #eeeeee;
   --light-grey: #7c7a7a;
-  --light-red: #dc7957;
+  --light-pink: #dc5774;
   --font-size: 14px;
 }
 
@@ -33,7 +33,7 @@ body {
 
 #shopping-cart button {
   margin-top: 16px;
-  background-color: var(--light-red);
+  background-color: var(--light-pink);
   border: none;
   height: 40px;
   width: 130px;
@@ -58,7 +58,7 @@ body {
 }
 
 #shopping-cart table tr td i:hover {
-  color: var(--light-red);
+  color: var(--light-pink);
   transition-duration: 0.2s;
   transition-timing-function: ease-out;
 }

@@ -3,7 +3,7 @@
   --padding: 3rem;
   --background-grey: #eeeeee;
   --light-grey: #7c7a7a;
-  --light-red: #dc7957;
+  --light-pink: #dc5774;
   --font-size: 14px;
 }
 
@@ -37,11 +37,11 @@ header a {
 
 #user-account-info span {
   font-size: var(--font-size);
-  color: var(--light-red);
+  color: var(--light-pink);
 }
 
 #user-account-info i {
-  color: var(--light-red);
+  color: var(--light-pink);
 }
 
 #logout-menu {
@@ -74,7 +74,7 @@ header a {
 }
 
 #logout-menu li:hover {
-  color: var(--light-red);
+  color: var(--light-pink);
 }
 
 #header-actions ul {
@@ -95,14 +95,14 @@ header a {
 }
 
 #header-actions ul li span:hover {
-  color: var(--light-red);
+  color: var(--light-pink);
   cursor: pointer;
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
 }
 
 #header-actions ul li i:hover {
-  color: var(--light-red);
+  color: var(--light-pink);
   cursor: pointer;
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
@@ -141,19 +141,19 @@ header a {
 }
 
 #header-menu ul li a:hover {
-  color: var(--light-red);
+  color: var(--light-pink);
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
 }
 
 #header-menu ul li i:hover {
-  color: var(--light-red);
+  color: var(--light-pink);
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
 }
 
 #active {
-  color: var(--light-red);
+  color: var(--light-pink);
 }
 
 /* Footer styling */
@@ -162,6 +162,7 @@ footer {
   background-color: white;
   display: block;
   padding-bottom: 0;
+  margin-top: 2rem;
 }
 
 .useful-info {
@@ -190,7 +191,7 @@ footer {
 
 .get-in-touch-info li i:hover {
   cursor: pointer;
-  color: var(--light-red);
+  color: var(--light-pink);
   transition-duration: 0.5s;
 }
 
@@ -202,7 +203,7 @@ footer {
 }
 
 .quick-links li:hover {
-  color: var(--light-red);
+  color: var(--light-pink);
   transition-duration: 0.5s;
 }
 
@@ -226,8 +227,12 @@ footer {
 }
 
 #social-media-icons i:hover {
-  color: var(--light-red);
+  color: var(--light-pink);
   transition-duration: 0.1s;
   transition-timing-function: ease-out;
   cursor: pointer;
+}
+
+.footer-with-gray-background {
+  background-color: var(--background-grey);
 }

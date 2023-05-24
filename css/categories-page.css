@@ -3,7 +3,7 @@
   --padding: 3rem;
   --background-grey: #eeeeee;
   --light-grey: #7c7a7a;
-  --light-red: #dc7957;
+  --light-pink: #dc5774;
   --font-size: 14px;
 }
 
@@ -60,7 +60,7 @@ main h1 {
 }
 
 .product-info-view-btn {
-  background-color: var(--light-red);
+  background-color: var(--light-pink);
   color: white;
   border: none;
   width: 70%;
@@ -83,6 +83,6 @@ main h1 {
 }
 
 #product-price {
-  color: var(--light-red);
+  color: var(--light-pink);
   font-weight: 800;
 }

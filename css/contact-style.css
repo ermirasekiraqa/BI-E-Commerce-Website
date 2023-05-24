@@ -3,7 +3,7 @@
   --padding: 3rem;
   --background-grey: #eeeeee;
   --light-grey: #7c7a7a;
-  --light-red: #dc7957;
+  --light-pink: #dc5774;
   --font-size: 14px;
 }
 
@@ -85,12 +85,10 @@ body {
   gap: 5rem;
   padding: var(--padding);
   background-color: var(--background-grey);
-  animation-name: animate;
-  animation-duration: 5s;
 }
 
 #form-details form {
-  width: 100%;
+  width: 30rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -107,7 +105,7 @@ body {
 
 #form-details button {
   margin-top: 0;
-  background-color: var(--light-red);
+  background-color: var(--light-pink);
   border: none;
   height: 40px;
   width: 130px;
@@ -129,7 +127,7 @@ body {
 }
 
 #form-details .people img {
-  width: 45%;
+  max-width: 10rem;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 15px;
@@ -146,5 +144,5 @@ body {
   display: block;
   font-size: 16px;
   font-weight: 600;
-  color: var(--light-red);
+  color: var(--light-pink);
 }

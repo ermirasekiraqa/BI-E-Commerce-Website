@@ -3,7 +3,7 @@
   --padding: 3rem;
   --background-grey: #eeeeee;
   --light-grey: #7c7a7a;
-  --light-red: #dc7957;
+  --light-pink: #dc5774;
   --font-size: 14px;
 }
 
@@ -17,7 +17,7 @@ img {
 }
 
 #explore {
-  color: var(--light-red);
+  color: var(--light-pink);
 }
 
 main {
@@ -65,7 +65,7 @@ main {
   place-self: center;
   font-size: 40px;
   font-weight: 300;
-  color: var(--light-red);
+  color: var(--light-pink);
 }
 
 .product-container {
@@ -99,7 +99,7 @@ main {
 }
 
 .product-info-view-btn {
-  background-color: var(--light-red);
+  background-color: var(--light-pink);
   color: white;
   border: none;
   width: 70%;
@@ -122,7 +122,7 @@ main {
 }
 
 #product-price {
-  color: var(--light-red);
+  color: var(--light-pink);
   font-weight: 800;
 }
 
@@ -189,7 +189,7 @@ main {
 
 .subscribe-info h1 {
   font-size: 40px;
-  color: var(--light-red);
+  color: var(--light-pink);
 }
 
 .subscribe-info p {
@@ -210,7 +210,7 @@ main {
 }
 
 #subscribe-form button {
-  background-color: var(--light-red);
+  background-color: var(--light-pink);
   color: white;
   border: none;
   margin-left: 20px;
