@@ -14,7 +14,7 @@ body {
 
 /* Entry styling */
 .entry {
-    background-image: url("/images/woman-holding-sunglasses1.jpg");
+    background-image: url("../images/woman-holding-sunglasses1.jpg");
     width: 100%;
     height: 40vh;
     background-size: cover;

@@ -1,17 +1,36 @@
+// function displayHeaderActions() {
+//   const header = document.querySelector("header");
+//   console.log("--- ", header);
+//   const user = localStorage.getItem("user");
+//   if (user) {
+//     const parsedUser = JSON.parse(user);
+//     const account = displayUserAccountInfoHeader(parsedUser.email);
+//     //@ts-ignore
+//     header.prepend(account);
+//   } else {
+//     const headerActions = createDisplayHeaderActions();
+//     //@ts-ignore
+//     header.prepend(headerActions);
+//   }
+// }
 function displayHeaderActions() {
   const header = document.querySelector("header");
-  console.log("--- ", header);
-  const user = localStorage.getItem("user");
-  if (user) {
-    const parsedUser = JSON.parse(user);
-    const account = displayUserAccountInfoHeader(parsedUser.email);
-    //@ts-ignore
-    header.prepend(account);
-  } else {
-    const headerActions = createDisplayHeaderActions();
-    //@ts-ignore
-    header.prepend(headerActions);
-  }
+
+  // Make a request to the server to check the user's authentication status
+  fetch("check_auth.php")
+    .then(response => response.json())
+    .then(data => {
+      if (data.authenticated) {
+        const account = displayUserAccountInfoHeader(data.email);
+        header.prepend(account);
+      } else {
+        const headerActions = createDisplayHeaderActions();
+        header.prepend(headerActions);
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
 }
 
 function createDisplayHeaderActions() {
@@ -101,15 +120,16 @@ function createLogOutMenu(accountMenu) {
   const logoutElement = document.createElement("li");
   logoutElement.textContent = "Log Out";
   logoutElement.addEventListener("click", () => {
-    localStorage.clear();
-    const url = document.URL;
-    if (url.includes("shopping-cart")) {
-      location.href = "login.html";
-    }
-    //@ts-ignore
-    header?.removeChild(accountMenu);
-    header?.removeChild(logoutMenu);
-    displayHeaderActions();
+    // localStorage.clear();
+    // const url = document.URL;
+    // if (url.includes("shopping-cart")) {
+    //   location.href = "login.html";
+    // }
+    // //@ts-ignore
+    // header?.removeChild(accountMenu);
+    // header?.removeChild(logoutMenu);
+    // displayHeaderActions();
+    window.location = "logout.php";
   });
 
   list.append(viewProfileElement, logoutElement);
