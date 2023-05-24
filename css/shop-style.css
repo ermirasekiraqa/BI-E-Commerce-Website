@@ -3,7 +3,7 @@
     --padding: 3rem;
     --background-grey: #eeeeee;
     --light-grey: #7c7a7a;
-    --light-red: #dc7957;
+    --light-pink: #dc5774;
     --font-size: 14px;
 }
 
@@ -78,7 +78,7 @@ body {
 .product-description h4 {
     margin: 0px;
     margin-bottom: 30px;
-    color: var(--light-red);
+    color: var(--light-pink);
 }
 
 .ratings {
@@ -103,7 +103,7 @@ body {
     border-radius: 50px;
     background-color: #fdf7f7;
     font-weight: 500;
-    color: var(--light-red);
+    color: var(--light-pink);
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -116,7 +116,7 @@ body {
 }
 
 .pages button {
-    background-color: var(--light-red);
+    background-color: var(--light-pink);
     color: white;
     border: none;
     width: 40px;
@@ -195,7 +195,7 @@ body {
 }
 
 #prod-price {
-    color: var(--light-red);
+    color: var(--light-pink);
     margin: 0;
 }
 
@@ -205,7 +205,7 @@ body {
 
 .entry-and-about-us-button {
     margin-top: 16px;
-    background-color: var(--light-red);
+    background-color: var(--light-pink);
     border: none;
     height: 40px;
     width: 130px;

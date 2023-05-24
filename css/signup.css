@@ -1,13 +1,28 @@
+:root {
+  --light-pink: #dc5774;
+  --background-grey: #eeeeee;
+}
+
+body {
+  background-color: var(--background-grey);
+}
+
 #signup-form {
+  margin-top: 2rem;
   display: grid;
   place-content: center;
   gap: 20px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: -5px -10px 10px 2px #d9d9d9, 5px 10px 15px 2px #d9d9d9,
+    -5px 10px 10px 2px #d9d9d9, 5px -10px 15px 2px #d9d9d9;
 }
 
 #signup-form input {
   padding: 8px;
   border-radius: 3px;
-  border: solid 1px #dc7957;
+  border: solid 1px var(--light-pink);
   outline: none;
 }
 
@@ -16,7 +31,7 @@
 }
 
 #signup-form button {
-  background-color: #dc7957;
+  background-color: var(--light-pink);
   color: white;
   border: none;
   border-radius: 3px;
@@ -26,7 +41,7 @@
 
 #terms-label {
   font-size: 14px;
-  color: #dc7957;
+  color: var(--light-pink);
 }
 
 #terms-label input[type="checkbox"] {
@@ -34,7 +49,7 @@
 }
 
 #signup-form h1 {
-  color: #dc7957;
+  color: var(--light-pink);
 }
 
 .container {
@@ -46,7 +61,7 @@
 .container a {
   justify-self: center;
   font-size: 14px;
-  color: #dc7957;
+  color: var(--light-pink);
 }
 
 #radio-buttons {
@@ -58,6 +73,6 @@
 
 .radio-label span {
   font-size: 12xp;
-  color: #dc7957;
+  color: var(--light-pink);
   text-align: center;
 }
