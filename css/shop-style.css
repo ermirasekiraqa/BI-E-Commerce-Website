@@ -32,9 +32,11 @@ body {
 /* Product container styling */
 .product-container {
     padding: var(--padding);
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: repeat(3, auto);
 }
 
 .product {
