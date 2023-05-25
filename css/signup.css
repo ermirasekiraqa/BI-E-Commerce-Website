@@ -66,6 +66,10 @@ body {
   margin: 2rem 0;
 }
 
+.container a:hover {
+  scale: 1.2;
+}
+
 .container p {
   font-size: 12px;
 }
