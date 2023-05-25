@@ -54,3 +54,8 @@ tbody tr:hover {
     color: #fff;
 }
 
+td img{
+    width: 140px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+  object-fit: center;
+}
