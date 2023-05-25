@@ -10,11 +10,9 @@ function outputProduct(item) {
 
 function createProductImg(item) {
   let productAnchor = document.createElement("a");
-  productAnchor.href = "product.html";
-  // productAnchor.onclick = setProductToLoadInSessionStorage;
+  productAnchor.href = `product.php?id=${item.id}`;
   let productImg = document.createElement("img");
-  productImg.src = item.image;
-  console.log(productImg.src);
+  productImg.src = "images".concat("/", item.image)
   productAnchor.appendChild(productImg);
   return productAnchor;
 }
@@ -49,8 +47,7 @@ function createProductPrice(item) {
 
 function createShoppingCartIcon(item) {
   let cartAnchor = document.createElement("a");
-  cartAnchor.href = "product.html";
-  // cartAnchor.onclick = setProductToLoadInSessionStorageFromIcon;
+  cartAnchor.href = `product.php?id=${item.id}`;
   let cartIcon = document.createElement("i");
   cartIcon.className = "fa fa-shopping-cart cart";
   cartAnchor.appendChild(cartIcon);
