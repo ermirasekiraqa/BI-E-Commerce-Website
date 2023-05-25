@@ -15,7 +15,7 @@ function addProduct($name, $price, $description,$image_url, $brand, $category)
     $query = "INSERT INTO product (name, price,description,image_url, brand, category, created_at) VALUES (?, ?, ?, ?, ?, ?,NOW())";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$name, $description,$price, $image_url, $brand, $category]);
-    echo "Product added successfully.";
+    echo '<script>alert("Product added successfully.");</script>';
 }
 
 // Function to delete a product
@@ -35,31 +35,13 @@ function deleteProduct($product_id)
         $deleteQuery = "DELETE FROM product WHERE product_id = ?";
         $deleteStmt = $pdo->prepare($deleteQuery);
         $deleteStmt->execute([$product_id]);
-        echo "Product deleted successfully.";
+        echo '<script>alert("Product deleted successfully.");</script>';
     } else {
-        echo "Product with ID $product_id does not exist.";
+        echo  '<script>alert("Product with ID '.$product_id.' does not exist..");</script>';
     }
-}
-/* function updateProduct($product_id, $name, $price, $description, $image_url, $brand, $category)
-{
-    global $pdo;
     
-    // Check if the product with the given ID exists in the database
-    $checkQuery = "SELECT COUNT(*) FROM product WHERE product_id = ?";
-    $checkStmt = $pdo->prepare($checkQuery);
-    $checkStmt->execute([$product_id]);
-    $count = $checkStmt->fetchColumn();
+}
 
-    if ($count > 0) {
-        // Update the product
-        $query = "UPDATE product SET name = ?, price = ?, image_url = ?,description=?, brand = ?, category = ? WHERE product_id = ?";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$name, $price, $description,$image_url, $brand, $category, $product_id]);
-        echo "Product updated successfully.";
-    } else {
-        echo "Product with ID $product_id does not exist.";
-    }
-} */
 function updateProduct($product_id, $name, $price, $description, $image_url, $brand, $category)
 {
     global $pdo;
@@ -109,12 +91,12 @@ function updateProduct($product_id, $name, $price, $description, $image_url, $br
             $values[] = $product_id;
             $stmt = $pdo->prepare($query);
             $stmt->execute($values);
-            echo "Product updated successfully.";
+            echo '<script>alert("Product updated successfully.");</script>';
         } else {
             echo "No fields provided for update.";
         }
     } else {
-        echo "Product with ID $product_id does not exist.";
+        echo '<script>alert("Product with ID '.$product_id.' does not exist..");</script>';
     }
 }
 
@@ -172,10 +154,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="warning">Image file must be of format: <br> images//filename</div>
         <input type="text" placeholder="Image-URL" name="image_url" required><br><br>  
         <input type="text" placeholder="Brand"name="brand" required><br><br>    
-        <input type="text" placeholder="Category" name="category" required><br><br>
+        <!-- <input type="text" placeholder="Category" name="category" required><br><br> -->
         <!-- <input type="submit" value="Add Product"> -->
+       <!--  <div class="radio-group">
+        <input type="radio" id="male" name="category" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="category" value="female" required>
+        <label for="female">Female</label>
+    </div><br><br> -->
+    <div class="category-group">
+        <label for="category"><p>Category:</p></label>
+        <div class="radio-group">
+            <input type="radio" id="male" name="category" value="male" required>
+            <label for="male"><p>Male</p></label>
+            <input type="radio" id="female" name="category" value="female" required>
+            <label for="female"><p>Female</p></label>
+        </div>
+    </div><br><br>
         <button class="form-button" type="submit" value="Add Product">Add Product</button>
     </form>
+
 </div>
     <div class="form">
          <h1>Delete Product</h1>
@@ -187,6 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="product-table.php" target="_blank">
     <button class="form-button product-list-button-delete">Product List</button>
   </a>
+
     </div>
     <div class="form">
         <h1>Update Product</h1>
@@ -198,7 +197,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" placeholder="Description" name="description" step="0.01"><br><br>
         <input type="text" placeholder="Image-URL" name="image_url" ><br><br>
         <input type="text" placeholder="Brand" name="brand" ><br><br>
-        <input type="text" placeholder ="Category"name="category" ><br><br>
+        <!-- <input type="text" placeholder ="Category"name="category" ><br><br> -->
+        <div class="category-group">
+        <label for="category"><p>Category:</p></label>
+        <div class="radio-group">
+            <input type="radio" id="male" name="category" value="male" required>
+            <label  for="male"><p>Male</p> </label>
+            <input type="radio" id="female" name="category" value="female" required>
+            <label class="category-options" for="female"><p>Female</p></label>
+        </div>
+    </div><br><br>
         <button class="form-button" type="submit" value="Update Product">Update Product</button>
         </form>
         <a href="product-table.php" target="_blank">

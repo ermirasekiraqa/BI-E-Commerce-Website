@@ -26,12 +26,12 @@ if (mysqli_num_rows($result) > 0) {
     $_SESSION['admin'] = true;
 
     // Redirect to the admin dashboard or any other page for the logged-in admin
-    header("Location: admin_dashboard.php");
+    header("Location: admin_dashboard.html");
     exit();
 } else {
     // Admin login failed
     // Redirect back to the login page with an error message
-    header("Location: login.php?error=1");
+    header("Location: index.html");
     exit();
 }
 
