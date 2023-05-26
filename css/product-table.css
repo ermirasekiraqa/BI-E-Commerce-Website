@@ -5,7 +5,14 @@
   }
   body{
    
-background-color: var(--background-grey);
+/* background-color: var(--background-grey); */
+background-image: url('../images/entry-background.jpg');
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;
+background-size: cover;
+opacity: 0.99;
+
   }
 table {
     
