@@ -118,7 +118,7 @@ $userProfile = getUserProfile($user_email);
     <p><strong>Country:</strong> <?php echo $userProfile['country']; ?></p>
     <!-- Display other profile information as needed -->
     
-    <div class="edit-link"><a href="edit_profile.php">Edit Profile</a></div>
+    <div class="edit-link"><a href="edit-profile.php">Edit Profile</a></div>
     <!-- Link to the page where users can edit their profiles -->
 </div>
 </body>
