@@ -15,6 +15,7 @@ body {
 .shopping-cart-and-button {
   padding: var(--padding);
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -37,7 +38,20 @@ body {
   margin-top: 60px;
 }
 
-#shopping-cart button {
+#cart-is-empty-message {
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+}
+
+#checkout-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+#checkout-button {
   margin-top: 16px;
   background-color: var(--light-pink);
   border: none;
@@ -48,8 +62,10 @@ body {
   cursor: pointer;
 }
 
-#shopping-cart button:hover {
+#checkout-button:hover {
   color: var(--background-grey);
+  scale: 1.1;
+  border-radius: 5px;
   transition-duration: 0.5s;
   transition-timing-function: ease-out;
 }

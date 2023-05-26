@@ -16,12 +16,6 @@ if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
         // User is authenticated
         $email = $_SESSION['email'];
         // If the user is logged in, add the product to their cart in the database
-        // Database credentials
-        // $servername = "localhost";
-        // $username = "root";
-        // $password = "";
-        // $dbname = "testdatabase";
-
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -38,11 +32,6 @@ if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
 
         // Fetch the result
         if ($stmt->fetch()) {
-            // $servername = "localhost";
-            // $username = "root";
-            // $password = "";
-            // $dbname = "testdatabase";
-
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
