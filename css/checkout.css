@@ -53,3 +53,9 @@ body {
     transition-duration: 0.5s;
     transition-timing-function: ease-out;
 }
+
+#payment-method-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
