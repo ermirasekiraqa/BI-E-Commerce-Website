@@ -117,18 +117,12 @@ function createLogOutMenu(accountMenu) {
   const list = document.createElement("ol");
   const viewProfileElement = document.createElement("li");
   viewProfileElement.textContent = "View Profile";
+  viewProfileElement.addEventListener("click", () => {
+    window.location = "index.html";
+  }); 
   const logoutElement = document.createElement("li");
   logoutElement.textContent = "Log Out";
   logoutElement.addEventListener("click", () => {
-    // localStorage.clear();
-    // const url = document.URL;
-    // if (url.includes("shopping-cart")) {
-    //   location.href = "login.html";
-    // }
-    // //@ts-ignore
-    // header?.removeChild(accountMenu);
-    // header?.removeChild(logoutMenu);
-    // displayHeaderActions();
     window.location = "logout.php";
   });
 

@@ -18,12 +18,18 @@ body {
   justify-content: center;
 }
 
-#shopping-cart table tr td img {
+.cart-table tr td img {
   width: 30%;
 }
 
-#shopping-cart table tr:nth-child(even) {
+.cart-table tr:nth-child(even) {
   background-color: var(--background-grey);
+}
+
+#shopping-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #shopping-cart div {

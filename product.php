@@ -49,65 +49,51 @@ if (isset($_GET['id'])) {
                     <li id="active">Shop</li>
                     <li><a href="about-us.html">About us</a></li>
                     <li><a href="contact.html">Contact</a></li>
-                    <li><a href="shopping-cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+                    <li><a href="shopping-cart.php"><i class="fa fa-shopping-cart"></i></a></li>
                 </ul>
             </nav>
         </header>
         <main>
-            <section id="product-card" class="single-product">
-                <!-- <div id="images">
+            <section class="single-product-container">
+                <div id="product-card" class="single-product">
                     <div id="main-img">
                         <img id="main" src="" alt="">
                     </div>
-                    <div id="smaller-images">
-                        <div id="small-img">
-                            <img class="small" src="images\black-drone.png" alt="">
+                    <div class="prod-description">
+                        <div class="prod-info">
+                            <div id="quantity-add-button">
+                                <input type="number" value="1" min="1" id="product-quantity">
+                                <button id="add-to-cart-button" class="entry-and-about-us-button">Add to cart</button>
+                            </div>
                         </div>
-                        <div id="small-img">
-                            <img class="small" src="images\blue-drone.png" alt="">
+                        <div class="prod-specifics">
+                            <table>
+                                <tr>
+                                    <th>Specifics</th>
+                                    <th>Details about product</th>
+                                </tr>
+                                <tr>
+                                    <td><b>Name</b></td>
+                                    <td><i id="product-name"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Brand</b></td>
+                                    <td><i id="product-brand"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Price</b></td>
+                                    <td><i id="product-price"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Description</b></td>
+                                    <td><i id="product-description"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><b>Category</b></td>
+                                    <td><i id="product-category"></i></td>
+                                </tr>
+                            </table>
                         </div>
-                        <div id="small-img">
-                            <img class="small" src="images\red-drone.png" alt="">
-                        </div>
-                    </div>
-                </div> -->
-                <div id="main-img">
-                    <img id="main" src="" alt="">
-                </div>
-                <div class="prod-description">
-                    <div class="prod-info">
-                        <div id="quantity-add-button">
-                            <input type="number" value="1" min="1" id="product-quantity">
-                            <button id="add-to-cart-button" class="entry-and-about-us-button">Add to cart</button>
-                        </div>
-                    </div>
-                    <div class="prod-specifics">
-                        <table>
-                            <tr>
-                                <th>Specifics</th>
-                                <th>Details about product</th>
-                            </tr>
-                            <tr>
-                                <td><b>Name</b></td>
-                                <td><i id="product-name"></i></td>
-                            </tr>
-                            <tr>
-                                <td><b>Brand</b></td>
-                                <td><i id="product-brand"></i></td>
-                            </tr>
-                            <tr>
-                                <td><b>Price</b></td>
-                                <td><i id="product-price"></i></td>
-                            </tr>
-                            <tr>
-                                <td><b>Description</b></td>
-                                <td><i id="product-description"></i></td>
-                            </tr>
-                            <tr>
-                                <td><b>Category</b></td>
-                                <td><i id="product-category"></i></td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
             </section>
@@ -175,13 +161,41 @@ if (isset($_GET['id'])) {
         $product = $result->fetch_assoc();
         // Display the product information in the HTML elements
         echo "<script>
-            // document.getElementById('main').src = 'images' + {$product['image_url']}';
             document.getElementById('main').src = 'images'.concat('/', '{$product['image_url']}');
             document.getElementById('product-name').innerText = '{$product['name']}';
             document.getElementById('product-brand').innerText = '{$product['brand']}';
             document.getElementById('product-price').innerText = '$' + '{$product['price']}';
             document.getElementById('product-description').innerText = '{$product['description']}';
             document.getElementById('product-category').innerText = '{$product['category']}';
+
+            // Add to Cart button click event handler
+            document.getElementById('add-to-cart-button').addEventListener('click', function() {
+            var quantity = parseInt(document.getElementById('product-quantity').value);
+
+            // AJAX request to addToCart.php
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'addToCart.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    // Handle the response from addToCart.php
+                    var response = xhr.responseText;
+                    console.log(response);
+                    // You can perform additional actions based on the response, such as displaying a success message
+                }
+            };
+            
+            // Prepare the data to send in the request body
+            var data = 'product_id=' + {$product['product_id']} + '&quantity=' + quantity;
+            
+            // Send the AJAX request
+            xhr.send(data);
+
+            // Deactivate button
+            let deactivatedButton = document.getElementById('add-to-cart-button');
+            deactivatedButton.innerText = 'Added to Cart';
+            deactivatedButton.disabled = 'disabled';
+        });
           </script>";
     } else {
         echo "Product not found.";
