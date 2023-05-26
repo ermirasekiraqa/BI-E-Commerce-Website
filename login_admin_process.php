@@ -13,7 +13,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Query the admin table to check if the provided email and password match an admin record
-$query = "SELECT * FROM admin WHERE email = '$email' AND password = '$password'";
+$query = "SELECT * FROM admin WHERE username = '$email' AND password = '$password'";
 $result = mysqli_query($conn, $query);
 
 // Check if a matching admin record was found

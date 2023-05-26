@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" placeholder="Name" name="name" required><br><br>
         <input type="number" placeholder="Price" name="price" step="0.01" required><br><br>
         <input type="text" placeholder="Description"name="description" required><br><br>
-        <div class="warning">Image file must be of format: <br> images//filename</div>
+        <div class="warning">Image file must be of format: filename</div>
         <input type="text" placeholder="Image-URL" name="image_url" required><br><br>  
         <input type="text" placeholder="Brand"name="brand" required><br><br>    
         <!-- <input type="text" placeholder="Category" name="category" required><br><br> -->
@@ -165,9 +165,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="category"><p>Category:</p></label>
         <div class="radio-group">
             <input type="radio" id="male" name="category" value="male" required>
-            <label for="male"><p>Male</p></label>
+            <label for="male"><p>Men</p></label>
             <input type="radio" id="female" name="category" value="female" required>
-            <label for="female"><p>Female</p></label>
+            <label for="female"><p>Women</p></label>
         </div>
     </div><br><br>
         <button class="form-button" type="submit" value="Add Product">Add Product</button>

@@ -1,18 +1,3 @@
-// function displayHeaderActions() {
-//   const header = document.querySelector("header");
-//   console.log("--- ", header);
-//   const user = localStorage.getItem("user");
-//   if (user) {
-//     const parsedUser = JSON.parse(user);
-//     const account = displayUserAccountInfoHeader(parsedUser.email);
-//     //@ts-ignore
-//     header.prepend(account);
-//   } else {
-//     const headerActions = createDisplayHeaderActions();
-//     //@ts-ignore
-//     header.prepend(headerActions);
-//   }
-// }
 function displayHeaderActions() {
   const header = document.querySelector("header");
 
@@ -105,12 +90,6 @@ function displayUserAccountInfoHeader(name) {
 
 function createLogOutMenu(accountMenu) {
   const header = document.querySelector("header");
-  // 	<!-- <div id="logout-menu">
-  // 	<ol>
-  // 		<li>View Profile</li>
-  // 		<li>Log out</li>
-  // 	</ol>
-  // </div>
   const logoutMenu = document.createElement("div");
   logoutMenu.setAttribute("id", "logout-menu");
 
