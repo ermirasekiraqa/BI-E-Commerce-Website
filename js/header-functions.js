@@ -97,7 +97,7 @@ function createLogOutMenu(accountMenu) {
   const viewProfileElement = document.createElement("li");
   viewProfileElement.textContent = "View Profile";
   viewProfileElement.addEventListener("click", () => {
-    window.location = "index.html";
+    window.location = "view-profile.php";
   }); 
   const logoutElement = document.createElement("li");
   logoutElement.textContent = "Log Out";

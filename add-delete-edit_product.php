@@ -164,10 +164,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="category-group">
         <label for="category"><p>Category:</p></label>
         <div class="radio-group">
-            <input type="radio" id="male" name="category" value="male" required>
-            <label for="male"><p>Men</p></label>
-            <input type="radio" id="female" name="category" value="female" required>
-            <label for="female"><p>Women</p></label>
+        <input type="radio" id="men" name="category" value="men" required>
+
+
+            <label for="men"><p>Men</p></label>
+            <input type="radio" id="women" name="category" value="women" required>
+            <label for="women"><p>Women</p></label>
         </div>
     </div><br><br>
         <button class="form-button" type="submit" value="Add Product">Add Product</button>
@@ -200,9 +202,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="category-group">
         <label for="category"><p>Category:</p></label>
         <div class="radio-group">
-            <input type="radio" id="male" name="category" value="male" >
+        <input type="radio" id="men" name="category" value="men" >
             <label  for="male"><p>Male</p> </label>
-            <input type="radio" id="female" name="category" value="female" >
+            <input type="radio" id="women" name="category" value="women" >
             <label class="category-options" for="female"><p>Female</p></label>
         </div>
     </div><br><br>
