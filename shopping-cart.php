@@ -33,7 +33,6 @@ echo '<!DOCTYPE html>
           <img src="images\logo.png" alt="Black and light red sunglasses">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="explore.html"> Explore</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="about-us.html">About us</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -181,7 +180,6 @@ if (!empty($cartItems)) {
 
   // Close the database connection
   $conn->close();
-
   // Display the total price
   echo '<tr>
   <td></td>

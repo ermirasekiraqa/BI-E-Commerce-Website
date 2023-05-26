@@ -15,7 +15,7 @@ function addUser($name, $last_name, $email, $password, $phone_number, $address, 
     $query = "INSERT INTO users (name, last_name, email, password, phone_number, address, city, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$name, $last_name, $email, $password, $phone_number, $address, $city, $country]);
-    echo "User added successfully.";
+    echo '<script>alert("User added successfully.");</script>';
 }
 
 // Function to delete a user
@@ -34,7 +34,7 @@ function deleteUser($user_id)
         $deleteQuery = "DELETE FROM users WHERE id = ?";
         $deleteStmt = $pdo->prepare($deleteQuery);
         $deleteStmt->execute([$user_id]);
-        echo "User deleted successfully.";
+        echo '<script>alert("User deleted successfully.");</script>';
     } else {
         echo "User with ID $user_id does not exist.";
     }
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $name = $_POST['name'];
                 $last_name = $_POST['last_name'];
                 $email = $_POST['email'];
-                $password = $_POST['password'];
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 $phone_number = $_POST['phone_number'];
                 $address = $_POST['address'];
                 $city = $_POST['city'];
