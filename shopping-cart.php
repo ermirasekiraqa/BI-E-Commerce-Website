@@ -33,7 +33,6 @@ echo '<!DOCTYPE html>
           <img src="images\logo.png" alt="Black and light red sunglasses">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="explore.html"> Explore</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="about-us.html">About us</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -46,6 +45,7 @@ echo '<!DOCTYPE html>
 
 // Retrieve cart items from the database or session storage
 $cartItems = [];
+$totalPrice = 0;
 
 // Check if the user is logged in or guest
 if (isset($_SESSION['email'])) {
@@ -150,6 +150,7 @@ if (!empty($cartItems)) {
     $item['name'] = $name;
     $item['price'] = $price;
     $item['image_url'] = $image_url;
+    $totalPrice += ($price * $item['quantity']);
     echo '<tr>';
     // Display the ID
     echo '<td>' . $counter . '</td>';
@@ -180,10 +181,9 @@ if (!empty($cartItems)) {
   $conn->close();
 
   // Calculate the total price of all items in the cart
-  $totalPrice = 0;
-  foreach ($cartItems as $item) {
-    $totalPrice += ($item['price'] * $item['quantity']);
-  }
+  // foreach ($cartItems as $item) {
+  //   $totalPrice += ($item['price'] * $item['quantity']);
+  // }
 
   // Display the total price
   echo '<tr>

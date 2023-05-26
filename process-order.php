@@ -16,6 +16,7 @@ $city;
 $country;
 $paymentMethod;
 $status;
+$totalPrice = 0;
 
 // Check if the user is logged in
 if (isset($_SESSION['email'])) {
@@ -95,13 +96,9 @@ foreach ($cartItems as &$item) {
 
     // Assign the fetched values to the cart item
     $item['price'] = $price;
+    $totalPrice += ($price * $item['quantity']);
 
     $stmt->close();
-}
-
-$totalPrice = 0;
-foreach ($cartItems as $item) {
-    $totalPrice += ($item['price'] * $item['quantity']);
 }
 
 // Paypal ose cash duhet me u procesu

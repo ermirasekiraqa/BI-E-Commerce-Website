@@ -14,11 +14,10 @@ function addProduct($name, $price, $description,$image_url, $brand, $category)
     global $pdo;
     $query = "INSERT INTO product (name, price,description,image_url, brand, category, created_at) VALUES (?, ?, ?, ?, ?, ?,NOW())";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$name, $description,$price, $image_url, $brand, $category]);
+    $stmt->execute([$name, $price, $description, $image_url, $brand, $category]);
     echo '<script>alert("Product added successfully.");</script>';
 }
 
-// Function to delete a product
 // Function to delete a product
 function deleteProduct($product_id)
 {

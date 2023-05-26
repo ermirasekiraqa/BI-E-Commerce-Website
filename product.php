@@ -45,7 +45,6 @@ if (isset($_GET['id'])) {
                 <img src="images\logo.png" alt="Black and light red sunglasses">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="explore.html"> Explore</a></li>
                     <li id="active">Shop</li>
                     <li><a href="about-us.html">About us</a></li>
                     <li><a href="contact.html">Contact</a></li>

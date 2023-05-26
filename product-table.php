@@ -40,7 +40,7 @@
                 echo "<td>{$row['name']}</td>";
                 echo "<td>{$row['price']}</td>";
                 echo "<td>{$row['description']}</td>";
-                echo "<td><img src='{$row['image_url']}' alt='Product Image' /></td>";
+                echo '<td><img src="images/' . $row['image_url'] . '" alt="Product Image"></td>';
                 echo "<td>{$row['brand']}</td>";
                 echo "<td>{$row['category']}</td>";
                 echo "<td>{$row['created_at']}</td>";
