@@ -15,7 +15,7 @@ $address;
 $city;
 $country;
 $paymentMethod;
-$status;
+$status = 'Processed';
 $totalPrice = 0;
 
 // Check if the user is logged in
@@ -101,8 +101,6 @@ foreach ($cartItems as &$item) {
     $stmt->close();
 }
 
-// Paypal ose cash duhet me u procesu
-$status = "Processed";
 // Insert data in Orders table
 $sql = "INSERT INTO orders (first_name, last_name, total_price, address, city, country, payment_method, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
