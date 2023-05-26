@@ -20,7 +20,6 @@ echo '<!DOCTYPE html>
       <link rel="stylesheet" href="css\shopping-cart-style.css" />
     
       <script defer src="js\header-functions.js"></script>
-      <script defer src="js\removeProductFromCart.js"></script>
     
       <title>Cart</title>
     
@@ -170,7 +169,15 @@ if (!empty($cartItems)) {
     echo '<td>' . $item['quantity'] . '</td>';
 
     // Display the trash icon
-    echo '<td><i class="fa fa-trash trash-icon"></i></td>';
+    // echo '<td><i class="fa fa-trash trash-icon"></i></td>';
+    // Display the trash icon
+    echo '<td>
+    <form action="remove-product-from-cart.php" method="post">
+      <input type="hidden" name="product_id" value="' . $item['product_id'] . '">
+      <button type="submit" class="fa fa-trash trash-icon" name="remove_from_cart"></button>
+    </form>
+    </td>';
+
 
     echo '</tr>';
 
