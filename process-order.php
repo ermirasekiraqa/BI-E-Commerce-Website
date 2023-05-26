@@ -63,7 +63,7 @@ if (isset($_SESSION['email'])) {
     // Retrieve cart items from the session storage
     // Access the session storage data and assign it to $cartItems
     if (isset($_SESSION['cart_items'])) {
-      $cartItems = $_SESSION['cart_items'];
+        $cartItems = $_SESSION['cart_items'];
     }
     // Insert order details into the database
     $firstName = $_POST['firstName'];
@@ -98,6 +98,13 @@ foreach ($cartItems as &$item) {
     $item['price'] = $price;
     $totalPrice += ($price * $item['quantity']);
 
+        //     // // Insert the product_id and order_id into the order_products table
+    //     // $sql = "INSERT INTO order_products (order_id) VALUES (?)";
+    //     // $insertStmt  = $conn->prepare($sql);
+    //     // $insertStmt ->bind_param('i', $order_id);
+    //     // $insertStmt ->execute();
+    //     // $insertStmt ->close();
+    
     $stmt->close();
 }
 
@@ -107,8 +114,35 @@ $status = "Processed";
 $sql = "INSERT INTO orders (first_name, last_name, total_price, address, city, country, payment_method, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('sssssssd', $firstName, $lastName, $totalPrice, $address, $city, $country, $paymentMethod, $status);
+// $stmt->execute();
+// $order_id = $stmt->insert_id;
+// foreach ($cartItems as $item) { 
+//     $productId = intval($item['product_id']);
+//     $quantity = intval($item['quantity']);
 
+//     echo $productId;
+//     echo $quantity;
+// }
+    // // //     // echo json_encode($cartItems);
+    // //     $productId = $item['product_id'];
+    // //     $Quantity = $item['quantity'];
+    // //     echo $productId;
+    // //     echo $Quantity;
+    //     // // Insert the product_id and order_id into the order_products table
+    //     // $sql = "INSERT INTO order_products (order_id) VALUES (?)";
+    //     // $insertStmt  = $conn->prepare($sql);
+    //     // $insertStmt ->bind_param('i', $order_id);
+    //     // $insertStmt ->execute();
+    //     // $insertStmt ->close();
+    //     // Insert the product_id and order_id into the order_products table
+    // $sql = "INSERT INTO order_products (order_id, product_id, quantity) VALUES (?, ?, ?)";
+    // $insertStmt  = $conn->prepare($sql);
+    // $insertStmt ->bind_param('iii', $order_id, $item['product_id'], $item['quantity']);
+    // $insertStmt ->execute();
+    // $insertStmt ->close();
+    // }
 if ($stmt->execute()) {
+    // echo json_encode($cartItems);
     // Clear user's cart after order
     if (isset($_SESSION['email'])) {
         $sql = "DELETE FROM cart WHERE user_id = ?";
@@ -118,8 +152,9 @@ if ($stmt->execute()) {
         $stmt->close();
     } else {
         session_destroy();
-        $stmt->close(); 
+        $stmt->close();
     }
+
     // Redirect the user to a success page or perform other actions
     echo '<!DOCTYPE html>
     <html lang="en">
@@ -218,4 +253,3 @@ if ($stmt->execute()) {
 
 // Close the database connection
 $conn->close();
-?>

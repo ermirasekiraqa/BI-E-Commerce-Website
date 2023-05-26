@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $description=$_POST['description'];
                 $image_url = $_POST['image_url'];
                 $brand = $_POST['brand'];
-                $category = $_POST['category'];
+                $category = isset($_POST['category']) ? $_POST['category'] : ''; // Set the category to an empty string if not selected
                 updateProduct($product_id, $name, $price, $description,$image_url, $brand, $category);
                 break;
         }

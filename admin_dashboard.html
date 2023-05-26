@@ -16,18 +16,23 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: var(--background-grey);
             padding-top: 70px;
+            background-image: url('images/entry-background.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            opacity: 0.9;
         }
         h1 {
             font-size: 40px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-align: center;
             color: var(--light-pink);
             border-radius: 5px;
             padding: 5px 20px; 
             box-shadow: -5px -10px 10px 2px #d9d9d9, 5px 10px 15px 2px #d9d9d9,
-    -5px 10px 10px 2px #d9d9d9, 5px -10px 15px 2px #d9d9d9;
+            -5px 10px 10px 2px #d9d9d9, 5px -10px 15px 2px #d9d9d9;
             background-color: var(--background-grey);
             max-width: 300px;
             position: relative;
@@ -85,8 +90,8 @@
         <a href="add-delete-edit_users.php" class="square">
             <p>Manage Users</p>
         </a>
-        <a href="view-orders.html" class="square">
-            <p>Manage Orders</p>
+        <a href="orders-table.php" class="square">
+            <p>View Orders</p>
         </a>
     </div>
 </body>
