@@ -44,10 +44,10 @@
       echo '<form action="process-order.php" method="post">
         <!-- Payment method input field -->
         <h1>Choose payment method</h1>
-        <select name="paymentMethod" id="paymentMethod"><br>
-          <option value="Cash">Cash</option>
-          <option value="Paypal">PayPal</option>
-        </select>
+        <div id="payment-method-container">
+          <label for="cashPayment"><input type="radio" name="paymentMethod" id="cashPayment" value="Cash"> Cash</label>
+          <label for="paypalPayment"><input type="radio" name="paymentMethod" id="paypalPayment" value="PayPal"> PayPal</label>
+        </div>
         <input type="submit" value="Place Order" id="place-order-button">
       </form>';
     // echo 'User is logged in';
@@ -64,10 +64,11 @@
         <input type="text" name="country" id="country" placeholder="Country" required><br>
 
         <!-- Payment method input field -->
-        <select name="paymentMethod" id="paymentMethod"><br>
-          <option value="cash">Cash</option>
-          <option value="paypal">PayPal</option>
-        </select>
+        <div id="payment-method-container">
+          <label for="cashPayment"><input type="radio" name="paymentMethod" id="cashPayment" value="Cash"> Cash</label>
+          <label for="paypalPayment"><input type="radio" name="paymentMethod" id="paypalPayment" value="PayPal"> PayPal</label>
+        </div>
+
         <input type="submit" value="Place Order" id="place-order-button">
       </form>';
     }    
