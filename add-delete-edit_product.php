@@ -96,7 +96,7 @@ function updateProduct($product_id, $name, $price, $description, $image_url, $br
             echo "No fields provided for update.";
         }
     } else {
-        echo '<script>alert("Product with ID '.$product_id.' does not exist..");</script>';
+        echo   '<script>alert("Product with ID '.$product_id.' does not exist.");</script>';
     }
 }
 
@@ -201,9 +201,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="category-group">
         <label for="category"><p>Category:</p></label>
         <div class="radio-group">
-            <input type="radio" id="male" name="category" value="male" required>
+            <input type="radio" id="male" name="category" value="male" >
             <label  for="male"><p>Male</p> </label>
-            <input type="radio" id="female" name="category" value="female" required>
+            <input type="radio" id="female" name="category" value="female" >
             <label class="category-options" for="female"><p>Female</p></label>
         </div>
     </div><br><br>

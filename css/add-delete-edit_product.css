@@ -124,6 +124,29 @@
   color: var(--light-grey);
   
 }
+.user-form input{
+  margin-bottom: 10px;
+ 
+}
+.user-list-button{
+  
+  width: 280%;
+  position: relative;
+  
+  right: 55px;
+ text-align: center;
+ bottom: 105px;
+}
+.user-list-button-update{
+  width: 285%;
+  position: relative;
+  
+right: 55px;
+ text-align: center;
+bottom: 20px;
+
+}
+
 
 
 
