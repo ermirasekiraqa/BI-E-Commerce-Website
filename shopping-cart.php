@@ -46,6 +46,7 @@ echo '<!DOCTYPE html>
 
 // Retrieve cart items from the database or session storage
 $cartItems = [];
+$totalPrice = 0;
 
 // Check if the user is logged in or guest
 if (isset($_SESSION['email'])) {
@@ -91,7 +92,6 @@ if (isset($_SESSION['email'])) {
   while ($row = $result->fetch_assoc()) {
     $cartItems[] = $row;
   }
-
   // Close the statement
   $stmt->close();
 } else {
@@ -150,6 +150,9 @@ if (!empty($cartItems)) {
     $item['name'] = $name;
     $item['price'] = $price;
     $item['image_url'] = $image_url;
+    // Calculate total price
+    $totalPrice = $totalPrice + ($price * $item['quantity']);
+
     echo '<tr>';
     // Display the ID
     echo '<td>' . $counter . '</td>';
@@ -178,12 +181,6 @@ if (!empty($cartItems)) {
 
   // Close the database connection
   $conn->close();
-
-  // Calculate the total price of all items in the cart
-  $totalPrice = 0;
-  foreach ($cartItems as $item) {
-    $totalPrice += ($item['price'] * $item['quantity']);
-  }
 
   // Display the total price
   echo '<tr>
