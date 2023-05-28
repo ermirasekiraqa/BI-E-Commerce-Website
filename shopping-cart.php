@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "testdatabase";
+$dbname = "e-commerce-db";
 
 echo '<!DOCTYPE html>
     <html lang="en">
@@ -48,50 +48,54 @@ $totalPrice = 0;
 
 // Check if the user is logged in or guest
 if (isset($_SESSION['email'])) {
-  $email = $_SESSION['email'];
+  if ($_SESSION['role'] === 'admin') {
+    header("Location: admin_dashboard.html");
+  } else {
+    $email = $_SESSION['email'];
 
-  // Connect to the database
-  $conn = new mysqli($servername, $username, $password, $dbname);
+    // Connect to the database
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-  // Check if the connection was successful
-  if ($conn->connect_error) {
-    die('Database connection failed: ' . $conn->connect_error);
+    // Check if the connection was successful
+    if ($conn->connect_error) {
+      die('Database connection failed: ' . $conn->connect_error);
+    }
+
+    // Fetch the user_id based on the email
+    $email = $_SESSION['email'];
+
+    // Prepare the SQL statement to retrieve user_id
+    $sql = "SELECT id FROM users WHERE email = ?";
+
+    // Prepare and bind the parameter
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $email);
+
+    // Execute the query
+    $stmt->execute();
+
+    // Bind the result variable
+    $stmt->bind_result($user_id);
+
+    // Fetch the result
+    $stmt->fetch();
+
+    // Close the statement
+    $stmt->close();
+    // Fetch all rows from the cart table for the specific user_id
+    $sql = "SELECT * FROM cart WHERE user_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Store the fetched rows in an array
+    while ($row = $result->fetch_assoc()) {
+      $cartItems[] = $row;
+    }
+    // Close the statement
+    $stmt->close();
   }
-
-  // Fetch the user_id based on the email
-  $email = $_SESSION['email'];
-
-  // Prepare the SQL statement to retrieve user_id
-  $sql = "SELECT id FROM users WHERE email = ?";
-
-  // Prepare and bind the parameter
-  $stmt = $conn->prepare($sql);
-  $stmt->bind_param('s', $email);
-
-  // Execute the query
-  $stmt->execute();
-
-  // Bind the result variable
-  $stmt->bind_result($user_id);
-
-  // Fetch the result
-  $stmt->fetch();
-
-  // Close the statement
-  $stmt->close();
-  // Fetch all rows from the cart table for the specific user_id
-  $sql = "SELECT * FROM cart WHERE user_id = ?";
-  $stmt = $conn->prepare($sql);
-  $stmt->bind_param('i', $user_id);
-  $stmt->execute();
-  $result = $stmt->get_result();
-
-  // Store the fetched rows in an array
-  while ($row = $result->fetch_assoc()) {
-    $cartItems[] = $row;
-  }
-  // Close the statement
-  $stmt->close();
 } else {
   // Retrieve cart items from the session storage
   // Access the session storage data and assign it to $cartItems

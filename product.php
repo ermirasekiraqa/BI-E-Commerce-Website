@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Retrieve the product ID from the URL parameter
 if (isset($_GET['id'])) {
     $productId = $_GET['id'];
@@ -6,7 +8,7 @@ if (isset($_GET['id'])) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "testdatabase";
+    $dbname = "e-commerce-db";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -166,36 +168,47 @@ if (isset($_GET['id'])) {
             document.getElementById('product-price').innerText = '$' + '{$product['price']}';
             document.getElementById('product-description').innerText = '{$product['description']}';
             document.getElementById('product-category').innerText = '{$product['category']}';
-
+          </script>";
+        if (isset($_SESSION['email'])) {
+            // User is authenticated
+            if ($_SESSION['role'] === 'admin') {
+                echo "<script>
+                // Add to Cart button click event handler
+                document.getElementById('add-to-cart-button').addEventListener('click', function() {
+                    window.location = 'admin_dashboard.php';
+                });</script>";
+            } 
+        } else {
+            echo "<script>
             // Add to Cart button click event handler
             document.getElementById('add-to-cart-button').addEventListener('click', function() {
             var quantity = parseInt(document.getElementById('product-quantity').value);
-
+            
             // AJAX request to addToCart.php
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'addToCart.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                    // Handle the response from addToCart.php
-                    var response = xhr.responseText;
-                    console.log(response);
-                    // You can perform additional actions based on the response, such as displaying a success message
-                }
-            };
-            
-            // Prepare the data to send in the request body
-            var data = 'product_id=' + {$product['product_id']} + '&quantity=' + quantity;
-            
-            // Send the AJAX request
-            xhr.send(data);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'addToCart.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                // Handle the response from addToCart.php
+                var response = xhr.responseText;
+                console.log(response);
+                // You can perform additional actions based on the response, such as displaying a success message
+            }
+        };
+        
+        // Prepare the data to send in the request body
+        var data = 'product_id=' + {$product['product_id']} + '&quantity=' + quantity;
+        
+        // Send the AJAX request
+        xhr.send(data);
 
-            // Deactivate button
-            let deactivatedButton = document.getElementById('add-to-cart-button');
-            deactivatedButton.innerText = 'Added to Cart';
-            deactivatedButton.disabled = 'disabled';
-        });
-          </script>";
+        // Deactivate button
+        let deactivatedButton = document.getElementById('add-to-cart-button');
+        deactivatedButton.innerText = 'Added to Cart';
+        deactivatedButton.disabled = 'disabled';
+    });</script>";
+        }
     } else {
         echo "Product not found.";
     }

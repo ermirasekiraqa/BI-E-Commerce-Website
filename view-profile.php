@@ -12,7 +12,7 @@ if (!isset($_SESSION['email'])) {
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'testdatabase';
+$database = 'e-commerce-db';
 
 // Create a new PDO instance
 $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);

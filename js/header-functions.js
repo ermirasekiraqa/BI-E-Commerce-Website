@@ -6,7 +6,7 @@ function displayHeaderActions() {
     .then(response => response.json())
     .then(data => {
       if (data.authenticated) {
-        const account = displayUserAccountInfoHeader(data.email);
+        const account = displayUserAccountInfoHeader(data.email, data.role);
         header.prepend(account);
       } else {
         const headerActions = createDisplayHeaderActions();
@@ -69,7 +69,7 @@ function createDisplayHeaderActions() {
   headerContainer.append(navigationList);
   return headerContainer;
 }
-function displayUserAccountInfoHeader(name) {
+function displayUserAccountInfoHeader(name, role) {
   const header = document.querySelector("header");
   const container = document.createElement("div");
   container.setAttribute("id", "user-account-info");
@@ -81,24 +81,33 @@ function displayUserAccountInfoHeader(name) {
   spanEl.textContent = name;
 
   container.addEventListener("click", () => {
-    const logoutMenu = createLogOutMenu(container);
+    const logoutMenu = createLogOutMenu(container, role);
     header?.prepend(logoutMenu);
   });
   container.append(icon, spanEl);
   return container;
 }
 
-function createLogOutMenu(accountMenu) {
+function createLogOutMenu(accountMenu, role) {
   const header = document.querySelector("header");
   const logoutMenu = document.createElement("div");
   logoutMenu.setAttribute("id", "logout-menu");
 
   const list = document.createElement("ol");
-  const viewProfileElement = document.createElement("li");
+
+  if (role === "admin") {
+    const logoutElement = document.createElement("li");
+    logoutElement.textContent = "Log Out";
+    logoutElement.addEventListener("click", () => {
+      window.location = "logout.php";
+    });
+    list.append(logoutElement);
+  } else {
+    const viewProfileElement = document.createElement("li");
   viewProfileElement.textContent = "View Profile";
   viewProfileElement.addEventListener("click", () => {
     window.location = "view-profile.php";
-  }); 
+  });
   const logoutElement = document.createElement("li");
   logoutElement.textContent = "Log Out";
   logoutElement.addEventListener("click", () => {
@@ -106,6 +115,8 @@ function createLogOutMenu(accountMenu) {
   });
 
   list.append(viewProfileElement, logoutElement);
+  }
+  
   logoutMenu.append(list);
   return logoutMenu;
 }

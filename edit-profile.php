@@ -12,7 +12,7 @@ if (!isset($_SESSION['email'])) {
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'testdatabase';
+$database = 'e-commerce-db';
 
 // Create a new PDO instance
 $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="edit-profile.css">
+    <link rel="stylesheet" href="css\edit-profile.css">
     <style>
         /* CSS styles for the edit profile form */
         /* ... Your CSS styles for the form ... */
