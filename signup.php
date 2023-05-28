@@ -3,7 +3,7 @@
 $dbHost = 'localhost';
 $dbUser = 'root';
 $dbPass = '';
-$dbName = 'testdatabase';
+$dbName = 'e-commerce-db';
 
 // Establish database connection
 $conn = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
@@ -24,11 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $address = $_POST['address'];
     $city = $_POST['city'];
     $country = $_POST['country'];
+    $role = 'customer';
 
     // Insert user data into the Users table
     try {
-        $sql = "INSERT INTO Users (name, last_name, email, password, phone_number, address, city, country) 
-                VALUES ('$name', '$last_name', '$email', '$password', '$phone_number', '$address', '$city', '$country')";
+        $sql = "INSERT INTO Users (name, last_name, email, password, phone_number, address, city, country, role) 
+                VALUES ('$name', '$last_name', '$email', '$password', '$phone_number', '$address', '$city', '$country', '$role')";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {

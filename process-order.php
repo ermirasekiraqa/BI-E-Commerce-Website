@@ -5,7 +5,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "testdatabase";
+$dbname = "e-commerce-db";
 
 $cartItems = [];
 $user_id;

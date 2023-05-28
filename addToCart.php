@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "testdatabase";
+$dbname = "e-commerce-db";
 
 // Check if the product ID and quantity are provided
 if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
@@ -14,24 +14,11 @@ if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
     // Check if the user is logged in or a guest
     if (isset($_SESSION['email'])) {
         // User is authenticated
-        $email = $_SESSION['email'];
-        // If the user is logged in, add the product to their cart in the database
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-        // Prepare and execute the query to retrieve the user ID
-        $sql = "SELECT id FROM users WHERE email = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->bind_result($userId);
-
-        // Fetch the result
-        if ($stmt->fetch()) {
+        if ($_SESSION['role'] === 'admin') {
+            header("Location: admin_dashboard.html");
+        } else {
+            $email = $_SESSION['email'];
+            // If the user is logged in, add the product to their cart in the database
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -39,31 +26,44 @@ if (isset($_POST['product_id']) && isset($_POST['quantity'])) {
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-            // Prepare and execute the query to insert the cart item
-            $sql = "INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
+            // Prepare and execute the query to retrieve the user ID
+            $sql = "SELECT id FROM users WHERE email = ?";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("iii", $userId, $productId, $quantity);
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $stmt->bind_result($userId);
 
-            if ($stmt->execute()) {
-                // Cart item added successfully
-                echo json_encode(array("success" => true));
+            // Fetch the result
+            if ($stmt->fetch()) {
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+                // Prepare and execute the query to insert the cart item
+                $sql = "INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("iii", $userId, $productId, $quantity);
+
+                if ($stmt->execute()) {
+                    // Cart item added successfully
+                    echo json_encode(array("success" => true));
+                } else {
+                    // Failed to add cart item, handle the error
+                    echo json_encode(array("success" => false, "message" => "Failed to add item to cart."));
+                }
+                // Close the database connection
+                $stmt->close();
+                $conn->close();
             } else {
-                // Failed to add cart item, handle the error
-                echo json_encode(array("success" => false, "message" => "Failed to add item to cart."));
+                // User not found, handle the error
+                echo json_encode(array("success" => false, "message" => "User not found."));
             }
-            // Close the database connection
-            $stmt->close();
-            $conn->close();
-        } else {
-            // User not found, handle the error
-            echo json_encode(array("success" => false, "message" => "User not found."));
+            echo json_encode(array("success" => true));
         }
-        echo json_encode(array("success" => true));
-    }
-    // else {
-    //     echo 'User in NOT logged in!';
-    // }
-    else {
+    } else {
         // If the user is a guest, store the product information in a temporary session variable
         $cartItem = array("product_id" => $productId, "quantity" => $quantity);
 

@@ -3,18 +3,25 @@
 $host = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'testdatabase';
+$database = 'e-commerce-db';
 
-// Create a new PDO instance
+session_start();
+
+// Check is the user is admin
+if (isset($_SESSION['email'])) {
+    // User is authenticated
+    if ($_SESSION['role'] === 'admin') {
+        // Create a new PDO instance
 $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
 
 // Function to add a user
 function addUser($name, $last_name, $email, $password, $phone_number, $address, $city, $country)
 {
     global $pdo;
-    $query = "INSERT INTO users (name, last_name, email, password, phone_number, address, city, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $role = 'customer';
+    $query = "INSERT INTO users (name, last_name, email, password, phone_number, address, city, country, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($query);
-    $stmt->execute([$name, $last_name, $email, $password, $phone_number, $address, $city, $country]);
+    $stmt->execute([$name, $last_name, $email, $password, $phone_number, $address, $city, $country, $role]);
     echo '<script>alert("User added successfully.");</script>';
 }
 
@@ -22,21 +29,25 @@ function addUser($name, $last_name, $email, $password, $phone_number, $address, 
 function deleteUser($user_id)
 {
     global $pdo;
-    
+
     // Check if the user with the given ID exists in the database
-    $checkQuery = "SELECT COUNT(*) FROM users WHERE id = ?";
+    $checkQuery = "SELECT role FROM users WHERE id = ?";
     $checkStmt = $pdo->prepare($checkQuery);
     $checkStmt->execute([$user_id]);
-    $count = $checkStmt->fetchColumn();
+    $user = $checkStmt->fetch();
 
-    if ($count > 0) {
-        // Delete the user
-        $deleteQuery = "DELETE FROM users WHERE id = ?";
-        $deleteStmt = $pdo->prepare($deleteQuery);
-        $deleteStmt->execute([$user_id]);
-        echo '<script>alert("User deleted successfully.");</script>';
+    if ($user['role'] === 'admin') {
+        echo '<script>alert("Cannot delete admin.");</script>';
     } else {
-        echo "User with ID $user_id does not exist.";
+        if ($user) {
+            // Delete the user
+            $deleteQuery = "DELETE FROM users WHERE id = ?";
+            $deleteStmt = $pdo->prepare($deleteQuery);
+            $deleteStmt->execute([$user_id]);
+            echo '<script>alert("User deleted successfully.");</script>';
+        } else {
+            echo '<script>alert("User with ID $user_id does not exist.");</script>';
+        }
     }
 }
 
@@ -44,64 +55,68 @@ function deleteUser($user_id)
 function updateUser($user_id, $name, $last_name, $email, $password, $phone_number, $address, $city, $country)
 {
     global $pdo;
-    
+
     // Check if the user with the given ID exists in the database
-    $checkQuery = "SELECT COUNT(*) FROM users WHERE id = ?";
+    $checkQuery = "SELECT role FROM users WHERE id = ?";
     $checkStmt = $pdo->prepare($checkQuery);
     $checkStmt->execute([$user_id]);
-    $count = $checkStmt->fetchColumn();
+    $user = $checkStmt->fetch();
 
-    if ($count > 0) {
-        // Build the update query
-        $updateFields = [];
-        $values = [];
-        
-        // Add the fields and values to update only if they are provided
-        if (!empty($name)) {
-            $updateFields[] = "name = ?";
-            $values[] = $name;
-        }
-        if (!empty($last_name)) {
-            $updateFields[] = "last_name = ?";
-            $values[] = $last_name;
-        }
-        if (!empty($email)) {
-            $updateFields[] = "email = ?";
-            $values[] = $email;
-        }
-        if (!empty($password)) {
-            $updateFields[] = "password = ?";
-            $values[] = $password;
-        }
-        if (!empty($phone_number)) {
-            $updateFields[] = "phone_number = ?";
-            $values[] = $phone_number;
-        }
-        if (!empty($address)) {
-            $updateFields[] = "address = ?";
-            $values[] = $address;
-        }
-        if (!empty($city)) {
-            $updateFields[] = "city = ?";
-            $values[] = $city;
-        }
-        if (!empty($country)) {
-            $updateFields[] = "country = ?";
-            $values[] = $country;
-        }
-
-        if (!empty($updateFields)) {
-            // Update the user
-            $query = "UPDATE users SET " . implode(", ", $updateFields) . " WHERE id = ?";
-            $values[] = $user_id;
-            $stmt = $pdo->prepare($query);
-            $stmt->execute($values);
-            echo '<script>alert("User updated successfully.");</script>';
-        } else {
-            echo "No fields provided for update.";
-        }
+    if ($user['role'] === 'admin') {
+        echo '<script>alert("Cannot edit admin.");</script>';
     } else {
-        echo '<script>alert("User with ID '.$user_id.' does not exist.");</script>';
+        if ($user) {
+            // Build the update query
+            $updateFields = [];
+            $values = [];
+
+            // Add the fields and values to update only if they are provided
+            if (!empty($name)) {
+                $updateFields[] = "name = ?";
+                $values[] = $name;
+            }
+            if (!empty($last_name)) {
+                $updateFields[] = "last_name = ?";
+                $values[] = $last_name;
+            }
+            if (!empty($email)) {
+                $updateFields[] = "email = ?";
+                $values[] = $email;
+            }
+            if (!empty($password)) {
+                $updateFields[] = "password = ?";
+                $values[] = $password;
+            }
+            if (!empty($phone_number)) {
+                $updateFields[] = "phone_number = ?";
+                $values[] = $phone_number;
+            }
+            if (!empty($address)) {
+                $updateFields[] = "address = ?";
+                $values[] = $address;
+            }
+            if (!empty($city)) {
+                $updateFields[] = "city = ?";
+                $values[] = $city;
+            }
+            if (!empty($country)) {
+                $updateFields[] = "country = ?";
+                $values[] = $country;
+            }
+
+            if (!empty($updateFields)) {
+                // Update the user
+                $query = "UPDATE users SET " . implode(", ", $updateFields) . " WHERE id = ?";
+                $values[] = $user_id;
+                $stmt = $pdo->prepare($query);
+                $stmt->execute($values);
+                echo '<script>alert("User updated successfully.");</script>';
+            } else {
+                echo "No fields provided for update.";
+            }
+        } else {
+            echo '<script>alert("User with ID ' . $user_id . ' does not exist.");</script>';
+        }
     }
 }
 
@@ -141,69 +156,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
-?>
 
-<!DOCTYPE html>
+echo '<!DOCTYPE html>
 <html>
+
 <head>
     <title>User Management</title>
     <link rel="stylesheet" href="css\add-delete-edit_product.css" />
-    <link rel="stylesheet" type="text/css"
-        href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin" />
 </head>
+
 <body>
-    
-<div class="container">
-  <div class="form user-form" >
-    <h1>Add User</h1>
-    <!-- Add User Form -->
-    <form method="post" action="">
-        <input type="hidden" name="action" value="add">
-        <input type="text" placeholder="Name" name="name" required><br>
-        <input type="text" placeholder="Last name" name="last_name" required><br>
-        <input type="email" placeholder="Email" name="email" required><br>
-        <input type="password" placeholder="Password" name="password" required><br>
-        <input type="text" placeholder="Phone number" name="phone_number" required><br>
-        <input type="text" placeholder="Address" name="address" required><br>
-        <input type="text"placeholder="City" name="city" required><br>   
-        <input type="text" placeholder="Country" name="country" required><br>
-        <button class="form-button" type="submit" value="Add User">Add User</button>
-    </form>
-    </div>
 
-    <div class="form user-form" >
-    <!-- Delete User Form -->
-    <h1>Delete User</h1>
-    <form method="post" action="">
-        <input type="hidden" name="action" value="delete">
-        <input type="number" placeholder="User ID" name="user_id" required><br>
-        <button class="form-button" type="submit" value="Delete User">Delete User</button>
-    </form>
-    <a href="user-table.php" target="_blank">
-  <button class="form-button user-list-button">User List</button>
-</a>
-    </div>
+    <div class="container">
+        <div class="form user-form">
+            <h1>Add User</h1>
+            <!-- Add User Form -->
+            <form method="post" action="">
+                <input type="hidden" name="action" value="add">
+                <input type="text" placeholder="Name" name="name" required><br>
+                <input type="text" placeholder="Last name" name="last_name" required><br>
+                <input type="email" placeholder="Email" name="email" required><br>
+                <input type="password" placeholder="Password" name="password" required><br>
+                <input type="text" placeholder="Phone number" name="phone_number" required><br>
+                <input type="text" placeholder="Address" name="address" required><br>
+                <input type="text" placeholder="City" name="city" required><br>
+                <input type="text" placeholder="Country" name="country" required><br>
+                <button class="form-button" type="submit" value="Add User">Add User</button>
+            </form>
+        </div>
+
+        <div class="form user-form">
+            <!-- Delete User Form -->
+            <h1>Delete User</h1>
+            <form method="post" action="">
+                <input type="hidden" name="action" value="delete">
+                <input type="number" placeholder="User ID" name="user_id" required><br>
+                <button class="form-button" type="submit" value="Delete User">Delete User</button>
+            </form>
+            <a href="user-table.php" target="_blank">
+                <button class="form-button user-list-button">User List</button>
+            </a>
+        </div>
 
 
-    <div class="form user-form">
-    <!-- Update User Form -->
-    <h1>Update User</h1>
-    <form method="post" action="">
-        <input type="hidden" name="action" value="update">
-        <input type="number" placeholder="User Id" name="user_id" required><br>
-        <input type="text" placeholder="Name" name="name" ><br>
-        <input type="text" placeholder="Last name" name="last_name"><br>
-        <input type="email" placeholder="Email" name="email" ><br>
-        <input type="password" placeholder="Password" name="password" ><br>
-        <input type="text" placeholder="Phone number" name="phone_number" ><br>
-        <input type="text" placeholder="Address" name="address" ><br>
-        <input type="text"placeholder="City" name="city" ><br>   
-        <input type="text" placeholder="Country" name="country" ><br>
-        <button class="form-button " type="submit" value="Update User">Update User</button>
-    </form>
-    <a href="user-table.php" target="_blank">
-    <button class="form-button user-list-button-update">User List</button>
-  </a>
-    </div>
+        <div class="form user-form">
+            <!-- Update User Form -->
+            <h1>Update User</h1>
+            <form method="post" action="">
+                <input type="hidden" name="action" value="update">
+                <input type="number" placeholder="User Id" name="user_id" required><br>
+                <input type="text" placeholder="Name" name="name"><br>
+                <input type="text" placeholder="Last name" name="last_name"><br>
+                <input type="email" placeholder="Email" name="email"><br>
+                <input type="password" placeholder="Password" name="password"><br>
+                <input type="text" placeholder="Phone number" name="phone_number"><br>
+                <input type="text" placeholder="Address" name="address"><br>
+                <input type="text" placeholder="City" name="city"><br>
+                <input type="text" placeholder="Country" name="country"><br>
+                <button class="form-button " type="submit" value="Update User">Update User</button>
+            </form>
+            <a href="user-table.php" target="_blank">
+                <button class="form-button user-list-button-update">User List</button>
+            </a>
+        </div>
 </body>
-</html>
+
+</html>';
+    } else {
+        header("Location: index.html");
+    }
+}

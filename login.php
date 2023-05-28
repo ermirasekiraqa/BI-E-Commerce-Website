@@ -3,7 +3,7 @@
 $dbHost = 'localhost';
 $dbUser = 'root';
 $dbPass = '';
-$dbName = 'testdatabase';
+$dbName = 'e-commerce-db';
 
 // Establish database connection
 $conn = mysqli_connect($dbHost, $dbUser, $dbPass, $dbName);
@@ -27,8 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (mysqli_num_rows($result) == 0) {
     // User does not exist, display message and registration link
-    // echo "User with email $email does not exist. ";
-    // echo "Please <a href='signup.html'>register</a> to create an account.";
     echo '<!DOCTYPE html>
             <html lang="en">
             
@@ -61,7 +59,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (password_verify($password, $row['password'])) {
       // Password is correct, set session variables and redirect to home page
       $_SESSION['email'] = $email;
-      header("Location: index.html");
+      $_SESSION['role'] = $row['role']; // Store the role value in session
+      if ($row['role'] == 'admin') {
+        header("Location: admin_dashboard.php");
+      } else {
+        header("Location: index.html");
+      }
       exit();
     } else {
       // Password is incorrect, display message and options

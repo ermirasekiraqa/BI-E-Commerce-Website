@@ -28,7 +28,6 @@
           <img src="images\logo.png" alt="Black and light red sunglasses">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="explore.html"> Explore</a></li>
             <li><a href="shop.html">Shop</a></li>
             <li><a href="about-us.html">About us</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -43,9 +42,9 @@
       // Display a simplified form with only the payment method
       echo '<form action="process-order.php" method="post">
         <!-- Payment method input field -->
-        <h1>Choose payment method</h1>
+        <h4>Choose payment method</h4>
+        <p>We only offer cash at the moment</p>
         <label for="cashPayment"><input type="radio" name="paymentMethod" id="cashPayment" value="Cash"> Cash</label>
-        <label for="paypalPayment"><input type="radio" name="paymentMethod" id="paypalPayment" value="PayPal"> PayPal</label>
         <input type="submit" value="Place Order" id="place-order-button">
       </form>';
     // echo 'User is logged in';
@@ -62,11 +61,9 @@
         <input type="text" name="country" id="country" placeholder="Country" required><br>
 
         <!-- Payment method input field -->
-        <div id="payment-method-container">
-          <label for="cashPayment"><input type="radio" name="paymentMethod" id="cashPayment" value="Cash"> Cash</label>
-          <label for="paypalPayment"><input type="radio" name="paymentMethod" id="paypalPayment" value="PayPal"> PayPal</label>
-        </div>
-
+        <h4>Choose payment method</h4>
+        <p>We only offer cash at the moment</p>
+        <label for="cashPayment"><input type="radio" name="paymentMethod" id="cashPayment" value="Cash"> Cash</label>
         <input type="submit" value="Place Order" id="place-order-button">
       </form>';
     }    
