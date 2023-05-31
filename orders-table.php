@@ -11,31 +11,47 @@ session_start();
 if (isset($_SESSION['email'])) {
     // User is authenticated
     if ($_SESSION['role'] === 'admin') {
-        echo '<!DOCTYPE html>
-<html>
-<head>
-    <title>Order Table</title>
-    <link rel="stylesheet" href="css/product-table.css" />
-</head>
-<body>
-    <table>
-        <caption>Orders List</caption>
-        <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Total Price</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Country</th>
-                <th>Payment Method</th>
-                <th>Status</th>
-                <th>Created At</th>
-                <th>Order Products</th> <!-- New column for the button -->
-            </tr>
-        </thead>
-        <tbody>';
+        echo
+        '<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" type="text/css"
+                href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+            <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin" />
+            <link rel="stylesheet" href="css\normalize.css">
+            <link rel="stylesheet" href="css\common.css">
+            <link rel="stylesheet" href="css/product-table.css" />
+
+            <script defer src="js\header-functions.js"></script>
+
+            <title>Order Table</title>
+        </head>
+        <body>
+            <header>
+            
+            </header>
+            <table>
+                <caption>Orders List</caption>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Total Price</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>Payment Method</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th>Order Products</th> <!-- New column for the button -->
+                    </tr>
+                </thead>
+                <tbody>';
 
         // Create a new PDO instance
         $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
@@ -56,13 +72,14 @@ if (isset($_SESSION['email'])) {
             echo "<td>{$row['payment_method']}</td>";
             echo "<td>{$row['status']}</td>";
             echo "<td>{$row['created_at']}</td>";
-            echo "<td><a href=\"order-products-table.php?order_id={$row['order_id']}\">View Order Products</a></td>"; // Button with link
+            echo "<td id='view-order-products-anchor'><a href=\"order-products-table.php?order_id={$row['order_id']}\">View Order Products</a></td>"; // Button with link
             echo "</tr>";
         }
-        echo '</tbody>
-    </table>
-</body>
-</html>';
+        echo
+        '</tbody>
+            </table>
+        </body>
+        </html>';
     } else {
         header("Location: index.html");
     }

@@ -38,14 +38,16 @@ $userProfile = getUserProfile($user_email);
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>User Profile</title>
     <style>
         :root {
-  --light-pink: #dc5774;
-  --background-grey: #eeeeee;
-  --light-grey: #7c7a7a;
-}
+            --light-pink: #dc5774;
+            --background-grey: #eeeeee;
+            --light-grey: #7c7a7a;
+        }
+
         body {
             background-image: url('..images/entry-background.jpg');
             font-family: 'Ubuntu', sans-serif;
@@ -65,15 +67,15 @@ $userProfile = getUserProfile($user_email);
         }
 
         .profile-container {
-    background-color:var(--light-pink) ;
-    border-radius: 5px;
-    padding: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: -5px -10px 10px 2px #d9d9d9, 5px 10px 15px 2px #d9d9d9,
-    -5px 10px 10px 2px #d9d9d9, 5px -10px 15px 2px #d9d9d9;
-}
+            background-color: var(--light-pink);
+            border-radius: 5px;
+            padding: 50px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: -5px -10px 10px 2px #d9d9d9, 5px 10px 15px 2px #d9d9d9,
+                -5px 10px 10px 2px #d9d9d9, 5px -10px 15px 2px #d9d9d9;
+        }
 
 
         .profile-container p {
@@ -90,12 +92,12 @@ $userProfile = getUserProfile($user_email);
             position: relative;
             text-align: center;
             margin-top: 10px;
-           
+
         }
 
         .edit-link a {
-           
-            
+
+
             color: #333;
             text-decoration: none;
             border-bottom: 1px solid #333;
@@ -106,20 +108,22 @@ $userProfile = getUserProfile($user_email);
         }
     </style>
 </head>
+
 <body>
-<div class="profile-container">
-    <h1>User Profile</h1>
-    <p><strong>Name:</strong> <?php echo $userProfile['name']; ?></p>
-    <p><strong>Last Name:</strong> <?php echo $userProfile['last_name']; ?></p>
-    <p><strong>Email:</strong> <?php echo $userProfile['email']; ?></p>
-    <p><strong>Phone Number:</strong> <?php echo $userProfile['phone_number']; ?></p>
-    <p><strong>Address:</strong> <?php echo $userProfile['address']; ?></p>
-    <p><strong>City:</strong> <?php echo $userProfile['city']; ?></p>
-    <p><strong>Country:</strong> <?php echo $userProfile['country']; ?></p>
-    <!-- Display other profile information as needed -->
-    
-    <div class="edit-link"><a href="edit-profile.php">Edit Profile</a></div>
-    <!-- Link to the page where users can edit their profiles -->
-</div>
+    <div class="profile-container">
+        <h1>User Profile</h1>
+        <p><strong>Name:</strong> <?php echo $userProfile['name']; ?></p>
+        <p><strong>Last Name:</strong> <?php echo $userProfile['last_name']; ?></p>
+        <p><strong>Email:</strong> <?php echo $userProfile['email']; ?></p>
+        <p><strong>Phone Number:</strong> <?php echo $userProfile['phone_number']; ?></p>
+        <p><strong>Address:</strong> <?php echo $userProfile['address']; ?></p>
+        <p><strong>City:</strong> <?php echo $userProfile['city']; ?></p>
+        <p><strong>Country:</strong> <?php echo $userProfile['country']; ?></p>
+        <!-- Display other profile information as needed -->
+
+        <div class="edit-link"><a href="edit-profile.php">Edit Profile</a></div>
+        <!-- Link to the page where users can edit their profiles -->
+    </div>
 </body>
+
 </html>

@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Edit Profile</title>
     <link rel="stylesheet" href="css\edit-profile.css">
@@ -67,30 +68,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         /* ... Your CSS styles for the form ... */
     </style>
 </head>
+
 <body>
     <div class="edit-profile-container">
         <h1>Edit Profile</h1>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="<?php echo $userProfile['name']; ?>">
-            
+
             <label for="last_name">Last Name:</label>
             <input type="text" id="last_name" name="last_name" value="<?php echo $userProfile['last_name']; ?>">
-            
+
             <label for="phone_number">Phone Number:</label>
             <input type="text" id="phone_number" name="phone_number" value="<?php echo $userProfile['phone_number']; ?>">
-            
+
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" value="<?php echo $userProfile['address']; ?>">
-            
+
             <label for="city">City:</label>
             <input type="text" id="city" name="city" value="<?php echo $userProfile['city']; ?>">
-            
+
             <label for="country">Country:</label>
             <input type="text" id="country" name="country" value="<?php echo $userProfile['country']; ?>">
-            
+
             <button type="submit">Save</button>
         </form>
     </div>
 </body>
+
 </html>

@@ -25,13 +25,13 @@ body {
     justify-content: center;
 }
 
-.container form input, select {
+.container form input,
+select {
     height: 30px;
     border: 1.5px solid var(--light-grey);
 }
 
 .container form h1 {
-    /* color: var(--light-pink); */
     font-size: 24px;
     margin-bottom: 20px;
 }

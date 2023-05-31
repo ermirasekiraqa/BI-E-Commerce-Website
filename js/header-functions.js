@@ -104,19 +104,19 @@ function createLogOutMenu(accountMenu, role) {
     list.append(logoutElement);
   } else {
     const viewProfileElement = document.createElement("li");
-  viewProfileElement.textContent = "View Profile";
-  viewProfileElement.addEventListener("click", () => {
-    window.location = "view-profile.php";
-  });
-  const logoutElement = document.createElement("li");
-  logoutElement.textContent = "Log Out";
-  logoutElement.addEventListener("click", () => {
-    window.location = "logout.php";
-  });
+    viewProfileElement.textContent = "View Profile";
+    viewProfileElement.addEventListener("click", () => {
+      window.location = "view-profile.php";
+    });
+    const logoutElement = document.createElement("li");
+    logoutElement.textContent = "Log Out";
+    logoutElement.addEventListener("click", () => {
+      window.location = "logout.php";
+    });
 
-  list.append(viewProfileElement, logoutElement);
+    list.append(viewProfileElement, logoutElement);
   }
-  
+
   logoutMenu.append(list);
   return logoutMenu;
 }

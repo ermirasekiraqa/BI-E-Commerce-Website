@@ -14,7 +14,6 @@ a {
 
 /* Header styling */
 header {
-  /* border: solid 1px black; */
   display: grid;
   gap: 10px;
 }
@@ -53,7 +52,6 @@ header a {
   position: absolute;
   z-index: 10;
   background-color: white;
-  /* margin-right: 50px; */
   top: 40px;
   right: 50px;
 }
@@ -83,7 +81,6 @@ header a {
   gap: 10px;
   grid-template-columns: auto 5px auto 5px auto auto;
   place-content: end;
-  /* border: solid 1px black; */
 }
 
 #header-actions ul li {

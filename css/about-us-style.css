@@ -10,7 +10,7 @@
 body {
   font-family: 'Ubuntu', sans-serif;
   overflow-x: hidden;
-  
+
 }
 
 /* Entry styling */
@@ -21,13 +21,10 @@ body {
   background-repeat: no-repeat;
   width: 100%;
   height: 70vh;
-  /* background-size: cover; */
   display: flex;
   justify-content: center;
   text-align: center;
   flex-direction: column;
-
-  /*  color: white; */
 }
 
 .entry h2 {
@@ -35,18 +32,15 @@ body {
   padding-top: 250px;
   color: black;
   font-size: 46px;
-
 }
 
 .entry p {
   margin: 0px;
-
   padding-bottom: 100px;
   color: black;
   font-size: 26px;
   padding-left: 350px;
 }
-
 
 /* About us style */
 #about-head {
@@ -59,7 +53,6 @@ body {
 #about-head img {
   width: 40%;
   height: auto;
-
 }
 
 #about-head div {
@@ -79,9 +72,7 @@ body {
   font-size: 42px;
   margin-bottom: 16px;
   text-align: center;
-
 }
-
 
 /* krijimi i pjeseve me ngjyra ne fillim */
 .container .boxes::before {
@@ -114,7 +105,6 @@ body {
   padding-left: 70px;
 
 }
-
 
 #ach-text,
 #cons-text,
@@ -252,8 +242,6 @@ body {
 
 }
 
-
-
 /* ---------------------------------------------------- */
 @keyframes example {
   from {
@@ -283,11 +271,9 @@ body {
   font-size: 46px;
 }
 
-
 #Emily {
   padding: var(--padding);
   display: block;
-
 }
 
 #Emily .container {
@@ -304,11 +290,8 @@ body {
 }
 
 #Emily p {
-
-
   padding-left: 50px;
   padding-right: 50px;
-
 }
 
 #CEO-text {
@@ -316,6 +299,4 @@ body {
   padding-top: 20px;
   padding-bottom: 30px;
   color: var(--light-grey);
-
-
 }

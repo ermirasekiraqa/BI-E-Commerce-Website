@@ -39,6 +39,8 @@ body {
 .product-container {
     padding: var(--padding);
     display: grid;
+    align-items: center;
+    justify-items: center;
     grid-template-columns: repeat(3, auto);
 }
 

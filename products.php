@@ -39,4 +39,3 @@ mysqli_close($conn);
 // Return the product data as JSON response
 header('Content-Type: application/json');
 echo json_encode($products);
-?>

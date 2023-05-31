@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <main>
                 <div class="registration-successful">
                     <p>Incorrect password.</p>
-                    <p id="login-link">Please <a href="login.html">try again</a> or <a href="forgot_password.html">reset your password</a>.</p>
+                    <p id="login-link">Please <a href="login.html">try again</a>.</p>
                 </div>
             </main>
             </body>
@@ -96,6 +96,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 }
-
-?>
-
