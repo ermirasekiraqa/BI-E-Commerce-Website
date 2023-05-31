@@ -12,15 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Check if the user is logged in or guest
   if (isset($_SESSION['email']) && isset($_POST['product_id'])) {
     // User is logged in and product_id is provided
-  
+
     // Connect to the database
     $conn = new mysqli($servername, $username, $password, $dbname);
-  
+
     // Check if the connection was successful
     if ($conn->connect_error) {
       die('Database connection failed: ' . $conn->connect_error);
     }
-  
+
     // Retrieve the user_id based on the email
     $email = $_SESSION['email'];
     $sql = "SELECT id FROM users WHERE email = ?";
@@ -30,18 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_result($user_id);
     $stmt->fetch();
     $stmt->close();
-  
+
     $product_id = $_POST['product_id'];
-  
+
     // Remove the product from the cart table
     $sql = "DELETE FROM cart WHERE user_id = ? AND product_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ii', $user_id, $product_id);
     $stmt->execute();
     $stmt->close();
-  
+
     // Close the database connection
-    $conn->close();  
+    $conn->close();
   } else {
     // User is a guest
     $product_id = $_POST['product_id'];

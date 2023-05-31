@@ -34,7 +34,6 @@ if (isset($_SESSION['email'])) {
   }
 }
 
-
 // Create an associative array with the authentication status and email
 $response = array(
   'authenticated' => $authenticated,
@@ -45,4 +44,3 @@ $response = array(
 // Send the response as JSON
 header('Content-Type: application/json');
 echo json_encode($response);
-?>

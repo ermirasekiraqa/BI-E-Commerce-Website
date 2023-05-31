@@ -11,4 +11,3 @@ session_destroy();
 // Redirect to the login page or any other page you desire
 header("Location: login.html");
 exit();
-?>

@@ -97,7 +97,7 @@ foreach ($cartItems as &$item) {
     // Assign the fetched values to the cart item
     $item['price'] = $price;
     $totalPrice += ($price * $item['quantity']);
-    
+
     $stmt->close();
 }
 
@@ -109,15 +109,15 @@ $stmt->bind_param('sssssssd', $firstName, $lastName, $totalPrice, $address, $cit
 if ($stmt->execute()) {
     // Get the order ID
     $order_id = $stmt->insert_id;
-    foreach ($cartItems as &$item) { 
+    foreach ($cartItems as &$item) {
         $productId = intval($item['product_id']);
         $quantity = intval($item['quantity']);
         // Insert the product_id and order_id into the order_products table
         $sql = "INSERT INTO order_products (order_id, product_id, quantity) VALUES (?, ?, ?)";
         $insertStmt  = $conn->prepare($sql);
-        $insertStmt ->bind_param('iii', $order_id, $productId, $quantity);
-        $insertStmt ->execute();
-        $insertStmt ->close();
+        $insertStmt->bind_param('iii', $order_id, $productId, $quantity);
+        $insertStmt->execute();
+        $insertStmt->close();
     }
     // Clear user's cart after order
     if (isset($_SESSION['email'])) {
